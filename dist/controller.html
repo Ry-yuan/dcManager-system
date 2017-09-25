@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管理界面</title>
+	<link rel="stylesheet" type="text/css" href="css/controller.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/circle.css">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+  <!-- <link rel="stylesheet" type="text/css" href="css/student.css"> -->
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+  <script type="text/javascript" src="js/controller.js"></script>
+</head>
+<!-- 主页面 -->
+<body class="body">
+	<!-- <div class="body"> -->
+		<header class="ctrl-header">
+			<div class="ctrl-logo"></div>
+			<div class="blue-bar"></div>
+			<div class="welcome"><div id="welcomMag"><span>欢迎您:&nbsp</span><span>管理员老师</span></div><a>注销</a></div>
+		</header>
+		<!-- 侧边栏 -->
+		<section class="ctrl-sideBar">
+			<dl class="icon" id="issue-icon">
+				<dt class="icon-issue">
+					<dd>发布</dd>
+				</dt>
+			</dl>
+			<dl class="icon" id="upload-icon">
+				<dt class="icon-upload">
+					<dd>上传</dd>
+				</dt>
+			</dl>
+			<dl class="icon" id="project">
+				<dt class="icon-project">
+					<dd>项目一览</dd>
+				</dt>
+			</dl>
+		</section>
+		<!-- 发布板块 -->
+		<div class="issue-wrapper allWrapper">
+			<section class="issue-container">
+				<section class="ctrl-upload">
+					<p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">管理员</a>--<a href="#">发布</a></p>
+					<div class="upload-box">
+			        <input id="file" class="issue" type="file" multiple="multiple"  title="添加文件"></input>
+			        </div>
+					<div class="file-box">
+						<!-- <dl class='newfile'><dt><dd>passage1</dd></dt><span class="deleFile"></span></dl> -->
+					</div>
+				</section>
+				<section class="content">
+					<p class="ctrl-pos">全部</p>
+					<div class="switch">
+						<span class="switch-btn news-btn">所有新闻</span>
+						<span class="switch-btn info-btn">所有通知</span>
+					</div>
+					<div class="all allnews">
+					</div>
+					<div class="load-more btn">
+					<p>加载更多</p>
+						<div class="circle-box">
+							<div class="sk-circle">
+					        <div class="sk-circle1 sk-child"></div>
+					        <div class="sk-circle2 sk-child"></div>
+					        <div class="sk-circle3 sk-child"></div>
+					        <div class="sk-circle4 sk-child"></div>
+					        <div class="sk-circle5 sk-child"></div>
+					        <div class="sk-circle6 sk-child"></div>
+					        <div class="sk-circle7 sk-child"></div>
+					        <div class="sk-circle8 sk-child"></div>
+					        <div class="sk-circle9 sk-child"></div>
+					        <div class="sk-circle10 sk-child"></div>
+					        <div class="sk-circle11 sk-child"></div>
+					        <div class="sk-circle12 sk-child"></div>
+					      </div>
+						</div>
+	  				</div>
+				</section>
+			</section>
+			<!-- 发布位置 -->
+			<section class="issue-pos">
+				  <p class="ctrl-pos">发布位置</p>
+			      <div class="checkbox-container">
+			      <div class="checkbox"><input type="radio" name="sendMgs" value="uploadNotice"></input><p>发布到通知栏</p></div>
+			      <div class="checkbox"><input type="radio" name="sendMgs" value="uploadNews"></input><p>发布到新闻栏</p></div>
+			      </div>
+			      <div class="btns-box">
+			      
+			        <div class="ctrl-btn ensure" >确定</div>
+			        <div class="ctrl-btn cancel">取消</div>
+			      </div>
+			</section>
+		</div>
+
+		<!-- 上传板块 upload-wrapper-->
+		<div class="upload-wrapper allWrapper">
+
+			<section class="upload-container">
+
+				<!-- <ul class="upload-tab">
+					<li class="tab-lb tab-select">轮播图</li>
+					<li class="tab-down">下载文件</li>
+				</ul> -->
+				<section class="ctrl-upload">
+				<ul>
+					<li class="upload-cancel">取消</li>
+					<li class="upload-sure">确定</li>
+				</ul>
+				<div class="upload-box">
+						        <input id="fileUpload" class="uploadFile" type="file" multiple="multiple"  title="添加文件"></input>
+						        <p>上传下载文件</p>
+						        </div>
+				<div class="upload-box">
+		        <input id="fileUpload" class="upload" type="file" multiple="multiple"  title="添加文件" ></input>
+		        <p>上传轮播图片</p>
+		        </div>
+		        
+		        <!-- 动态内容区 -->
+				<div class="downfiles-box">
+				<!-- <div class='uploadImg'><img  src="images/close.png"><span class="deleFile"></span></div> -->
+
+				<!-- <img class="uploadImg" src="" alt=""> -->
+				</div>
+				</section>
+				<section class="content">
+					<p class="ctrl-pos">全部</p>
+					<div class="switch">
+						<span class="switch-btn news-btn">所有新闻</span>
+						<span class="switch-btn info-btn">所有通知</span>
+					</div>
+					<div class="all allnews">
+						<!-- <div class="allnews-list"><span class="point"></span><span class="date">10.10</span><li><a href="#">广东金融学院第十一届学术学风动员大会举办通知.</a></li><span class="pull-down"></span><div class="dele">删除</div></div> -->
+					</div>
+					<div class="load-more btn">
+					<p>加载更多</p>
+						<div class="circle-box">
+							<div class="sk-circle">
+					        <div class="sk-circle1 sk-child"></div>
+					        <div class="sk-circle2 sk-child"></div>
+					        <div class="sk-circle3 sk-child"></div>
+					        <div class="sk-circle4 sk-child"></div>
+					        <div class="sk-circle5 sk-child"></div>
+					        <div class="sk-circle6 sk-child"></div>
+					        <div class="sk-circle7 sk-child"></div>
+					        <div class="sk-circle8 sk-child"></div>
+					        <div class="sk-circle9 sk-child"></div>
+					        <div class="sk-circle10 sk-child"></div>
+					        <div class="sk-circle11 sk-child"></div>
+					        <div class="sk-circle12 sk-child"></div>
+					      </div>
+						</div>
+	  				</div>
+				</section>
+			</section>
+		</div>
+
+		<div class="projects allWrapper">
+			<ul>
+
+				<div class="filter-box">
+					<p>年份:</p>
+			      	<select id="select-time">
+			      		<option>2016</option>
+			      		<option>2015</option>
+			      	</select>
+			      </div>
+			      <div class="filter-box">
+					<p>系别:</p>
+			      	<select id="select-dep">
+			      		<option>互联网金融与信息工程系</option>
+			      		<option>金融系</option>
+			      		<option>保险系</option>
+			      		<option>外语系</option>
+			      	</select>
+			      </div>
+			      <div class="filter-btn">确定</div>
+				<li class="projects-down"><a>下载</a></li>
+				<li class="projects-undo">撤项</li>
+			</ul>
+			<table>
+				<thead>
+						<tr>
+							<td ><span class="select-all">全选</span><span class="dele-all">清空</span></td>
+							<td>项目名称</td>
+							<td>项目编号</td>
+							<td>项目类别</td>
+							<td>指导老师</td>
+							<td>填报人</td>
+							<td>填报日期</td>
+							<td>项目状态</td>
+							<td>分数</td>
+							<td>操作</td>
+						</tr>				
+				</thead>
+				<tbody>
+						
+					</tbody>
+			</table>
+			<div class="load-more-project btn">
+					<p>加载更多</p>
+						<div class="circle-box">
+							<div class="sk-circle">
+					        <div class="sk-circle1 sk-child"></div>
+					        <div class="sk-circle2 sk-child"></div>
+					        <div class="sk-circle3 sk-child"></div>
+					        <div class="sk-circle4 sk-child"></div>
+					        <div class="sk-circle5 sk-child"></div>
+					        <div class="sk-circle6 sk-child"></div>
+					        <div class="sk-circle7 sk-child"></div>
+					        <div class="sk-circle8 sk-child"></div>
+					        <div class="sk-circle9 sk-child"></div>
+					        <div class="sk-circle10 sk-child"></div>
+					        <div class="sk-circle11 sk-child"></div>
+					        <div class="sk-circle12 sk-child"></div>
+					      </div>
+						</div>
+	  				</div>
+		</div>
+		<!-- 遮幕，正在上传动画 -->
+    <div class="ctrl-overlay">
+      <div class="circle-box2">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+          </div>
+    </div>
+    <div class="loading">正在上传</div>
+    </div>
+    <div class="load-icon load-success"><p>上传成功</p></div>
+    <div class="load-icon load-false"><p>上传失败</p></div>
+    <!-- <div style="clear: both;"></div> -->
+	<!-- </div> -->
+
+</body>
+</html>

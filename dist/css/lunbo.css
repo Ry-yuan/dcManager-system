@@ -1,0 +1,47 @@
+#banner{ 
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 210px;  
+    position: relative;
+}  
+#banner ul{  
+    width: 8000px;
+    overflow: hidden;
+
+}
+#banner ul>li{  
+     height: 200px;
+     float: left;
+} 
+#banner ul>li img{
+    width: 99%;
+    height: 98%;
+    box-shadow: 2px 2px 8px #8a8c8e;
+    cursor: pointer;
+} 
+/* 左右箭头 */
+.arrow{
+    display: none;
+    width: 40px;
+    height: 80px;
+    position: absolute;
+    top: 25%;
+    z-index: 100;
+    background: url('../images/arrow.png');
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+}
+.arrow:hover{
+    background-color: white;
+    opacity: 0.6;
+}
+.arrow-left,.b-arrow-left{
+    left: 0px;
+    background-position: 0px 0px; 
+}
+.arrow-right,.b-arrow-right{
+    right: 0px;
+    padding-right: 3px;
+    background-position: -40px 0px;
+}
+

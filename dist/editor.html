@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学生页面</title>
+	<link rel="stylesheet" type="text/css" href="css/controller.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/student.css">
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript" src="js/student.js"></script>
+</head>
+<style>
+.article-container{
+    /* margin: 0 auto; */
+    margin-left: 15%;
+    margin-top: 50px;
+    width: 70%;
+    float: left;
+    /* border: 1px solid blue; */
+} 
+.editor-btn{
+	margin: 0 auto;
+	/* width: 50px; */
+	/* height: 25px; */
+	padding: 5px 10px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	float: left;
+	margin-top: 20px;
+	color: white;
+	opacity: 0.8;
+	cursor: pointer;
+	/* margin-left: 40%; */
+}
+.editor-btn:hover{
+	opacity: 1;
+}
+.editor-submit{
+	margin-right: 30px;
+	background-color: #33a3dc;
+}
+.editor-cancel{
+	background-color: #ef4136;
+}
+</style>
+<body class="body">
+	<header class="ctrl-header">
+			<div class="ctrl-logo"></div>
+			<div class="blue-bar"></div>
+		</header>
+	<form method="post" id="passage-editor" action="http://localhost:8080/System/ManagerServlet?method=saveEdit">
+		<div class="article-container">
+    <!-- 加载编辑器的容器 -->
+		    <script id="container" name="content" type="text/plain">
+		        <p>请编辑...</p>
+		    </script>
+		    <!-- 配置文件 -->
+		    <script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
+		    <!-- 编辑器源码文件 -->
+		    <script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
+		    <script type="text/javascript" src="./ueditor/lang/zh-cn/"></script>
+		    <!-- 实例化编辑器 -->
+		    <script type="text/javascript">
+		        var ue = UE.getEditor('container',{
+		            //focus时自动清空初始化时的内容
+		                autoClearinitialContent:true,
+		                //关闭字数统计
+		                wordCount:false,
+		                //关闭elementPath
+		                elementPathEnabled:false}
+		                );
+
+		    </script>
+
+			<div class="editor-btn editor-submit">提交</div>
+			<div class="editor-btn editor-cancel">取消</div>
+    	</div>
+
+	</form>
+	<script type="text/javascript">
+		$(function(){
+			$('.editor-submit').click(function(){
+				$('#passage-editor').submit();
+				console.log("ok");
+			});
+		})
+	</script>
+</body>
+</html>

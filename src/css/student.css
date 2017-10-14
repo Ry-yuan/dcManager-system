@@ -1,255 +1,309 @@
 /* 内容最外层 */
-.stu-wrapper{
-	margin: 0 auto;
-	margin-top: 30px;
-	/* float: left; */
-	width: 80%;
-	min-height: 550px;
-	overflow: hidden;
-	/* border: 1px solid red; */
-	background-color: rgba(241,245,248,0.5);
-	box-shadow: 0 0 5px #ccc;
-	position: relative;
-}
-.person-mag{
-	width: 90%;
-	height: 80%;
-	/* margin: 0 auto; */
-	/* margin-top: 40px; */
-	/* border: 1px solid blue; */
-	position: absolute;
-	left: 5%;
-	top: 15%;
-}
-.mag-list{
-	float: left;
-	/* border: 1px solid green; */
-	overflow: hidden;
-	width: 40%;
-	margin-left: 5%;
-	margin-top: 40px;
-	position: relative;
-}
-.mag-list p{
-	width: 30%;
-	height: 35px;
-	line-height: 35px;
-	/* border: 1px solid red; */
-	text-align: right;
-	float: left;
-}
-.mag-list input[type=text],.mag-list input[type=date],.radio-box,.up-project,select{
-	width: 60%;
-	height: 32px;
-	background-color: rgba(241,245,248,0.5);
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	display: block;
-	float: right;
-	text-indent: 5px;
-}
-.radio-box{
-	border: 0;
-}
-.up-project{
-	width: 30%;
-	float: left;
-	margin-left: 40px;
-	cursor: pointer;
-}
-.mag-list input[type=radio]{
-	margin-left: 5px;
-	width: 30px;
-}
-.mag-list .radio-box span{
-	height: 35px;
-	line-height: 35px;
-}
-.up-project span{
-	display: block;
-	/* border: 1px solid red; */
-	height: 35px;
-	line-height: 35px;
-	width: 100%;
-	color: white;
-	text-align: center;
-	/* text-indent: 2em; */
-	/* background: url('../images/upload.png'); */
-	/* background-size: 30% 90%; */
-	/* background-position: 3px; */
-	/* background-repeat: no-repeat; */
-	background-color: #8abadd;
-	position: relative;
-}
-.up-project span input[type=file]{
-	width: 100%;
-	display: block;
-	height: 100%;
-	opacity:0;
-	position: absolute;
-	top: 0px;
-}
-.up-project span:hover{
-	background-color: #33a3dc
-}
-.personMag{
-	/* display:none; */
-}
-.declare{
-	display: none;
-}
-.myproject{
-	display: none;
-}
-.success-up{
-	border: 1px solid red;
-	width: 30px;
-	height: 30px;
+
+.stu-wrapper {
+    margin: 0 auto;
+    margin-top: 30px;
+    /* float: left; */
+    width: 80%;
+    min-height: 550px;
+    overflow: hidden;
+    /* border: 1px solid red; */
+    background-color: rgba(241, 245, 248, 0.5);
+    box-shadow: 0 0 5px #ccc;
+    position: relative;
 }
 
+.person-mag {
+    width: 90%;
+    height: 80%;
+    /* margin: 0 auto; */
+    /* margin-top: 40px; */
+    /* border: 1px solid blue; */
+    position: absolute;
+    left: 5%;
+    top: 15%;
+}
+
+.mag-list {
+    float: left;
+    /* border: 1px solid green; */
+    overflow: hidden;
+    width: 40%;
+    margin-left: 5%;
+    margin-top: 40px;
+    position: relative;
+}
+
+.mag-list p {
+    width: 30%;
+    height: 35px;
+    line-height: 35px;
+    /* border: 1px solid red; */
+    text-align: right;
+    float: left;
+}
+
+.mag-list input[type=text],
+.mag-list input[type=date],
+.radio-box,
+.up-project,
+select {
+    width: 60%;
+    height: 32px;
+    background-color: rgba(241, 245, 248, 0.5);
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: block;
+    float: right;
+    text-indent: 5px;
+}
+
+.radio-box {
+    border: 0;
+}
+
+.up-project {
+    width: 30%;
+    float: left;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.mag-list input[type=radio] {
+    margin-left: 5px;
+    width: 30px;
+}
+
+.mag-list .radio-box span {
+    height: 35px;
+    line-height: 35px;
+}
+
+.up-project span {
+    display: block;
+    /* border: 1px solid red; */
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    /* text-indent: 2em; */
+    /* background: url('../images/upload.png'); */
+    /* background-size: 30% 90%; */
+    /* background-position: 3px; */
+    /* background-repeat: no-repeat; */
+    background-color: #8abadd;
+    position: relative;
+}
+
+.up-project span input[type=file] {
+    width: 100%;
+    display: block;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+}
+
+.up-project span:hover {
+    background-color: #33a3dc
+}
+
+.personMag {
+    /* display:none; */
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.declare {
+    /* display: none; */
+    z-index: 1000;
+}
+
+.myproject {
+    /* display: none; */
+}
+
+.success-up {
+    border: 1px solid red;
+    width: 30px;
+    height: 30px;
+}
+
+
 /* 我的项目表格 */
-.myproject table{
-	width: 100%;
-	/* border: 1px solid #ccc; */
+
+.myproject table {
+    width: 100%;
+    /* border: 1px solid #ccc; */
 }
-.myproject table td{
-	width: 12.5%;
-	text-align: center;
-	/* border: 1px solid red; */
+
+.myproject table td {
+    width: 12.5%;
+    text-align: center;
+    /* border: 1px solid red; */
 }
-.myproject table thead td{
-	font-weight: bold;
-	height: 60px;
-	background-color: #8abadd;
-	color: white;
+
+.myproject table thead td {
+    font-weight: bold;
+    height: 60px;
+    background-color: #8abadd;
+    color: white;
 }
-.myproject table tbody td{
-	height: 40px;
-	background-color: #d8f0f4;
+
+.myproject table tbody td {
+    height: 40px;
+    background-color: #d8f0f4;
 }
-.myproject table tbody td span{
-	width: 50%;
-	color: #33a3dc;
-	font-size: 13px;
-	margin-right: 10px;
-	text-align: center;
-	cursor: pointer;
+
+.myproject table tbody td span {
+    width: 50%;
+    color: #33a3dc;
+    font-size: 13px;
+    margin-right: 10px;
+    text-align: center;
+    cursor: pointer;
 }
-.myproject table tbody td span:hover{
-	color: blue;
+
+.myproject table tbody td span:hover {
+    color: blue;
 }
-.btn-box{
-	float: left;
-	margin-left: 40%;
-	width: 30%;
-	/* margin: 0 auto; */
-	height: 30px;
-	/* border: 1px solid red; */
-	margin-top: 40px;
-	/* text-align: center; */
-	/* overflow: hidden; */
+
+.btn-box {
+    float: left;
+    margin-left: 40%;
+    width: 30%;
+    /* margin: 0 auto; */
+    height: 30px;
+    /* border: 1px solid red; */
+    margin-top: 40px;
+    /* text-align: center; */
+    /* overflow: hidden; */
 }
-.btn-box li{
-	color: white;
-	background-color: #8abadd;
-	margin-left: 10%;
-	/* width: 40%; */
-	padding: 0px 5%;
-	/* width: 30%; */
-	float: left;
-	height: 30px;
-	line-height: 30px;
-	border: 1px solid #ccc;
-	/* margin: 0 auto; */
-	cursor: pointer;
-	z-index: 10;
+
+.btn-box li {
+    color: white;
+    background-color: #8abadd;
+    margin-left: 10%;
+    /* width: 40%; */
+    padding: 0px 5%;
+    /* width: 30%; */
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    /* margin: 0 auto; */
+    cursor: pointer;
+    z-index: 10;
 }
+
+
 /* 中期检查 */
-.checking{
-	display: none;
+
+.checking {
+    /* display: none; */
 }
-.checking .upload-box{
-	margin: 0 auto;
-	position: absolute;
-	left: 40%;
-	top: 20%;
-	opacity: 1;
+
+.checking .upload-box {
+    margin: 0 auto;
+    position: absolute;
+    left: 40%;
+    top: 20%;
+    opacity: 1;
 }
-.checking .upload-box p{
-	/* border: 1px solid red; */
-	border-radius: 3px;
-	background-color: #464547;
-	height: 40px;
-	color: white;
-	line-height: 40px;
-	padding: 0;
-	margin-top: 20px;
-	cursor: not-allowed;
-	/* opacity: 0.8; */
+
+.checking .upload-box p {
+    /* border: 1px solid red; */
+    border-radius: 3px;
+    background-color: #464547;
+    height: 40px;
+    color: white;
+    line-height: 40px;
+    padding: 0;
+    margin-top: 20px;
+    cursor: not-allowed;
+    /* opacity: 0.8; */
 }
+
+
 /* .checking .upload-box p:hover{
 	opacity: 1;
 	background-color:#45b97c; 
 } */
+
+
 /* 结项审核 */
-.final-check{
-	display: none;
+
+.final-check {
+    /* display: none; */
 }
-.checking .final-check1{
-	left: 25%;
+
+.checking .final-check1 {
+    left: 25%;
 }
-.checking .final-check2{
-	left: 55%;
+
+.checking .final-check2 {
+    left: 55%;
 }
-.welcome{
-	position: absolute;
-	background-color: rgba(241,245,248,0.5);
-	top: -100px;
-	left: 40%;
-	/* border: 1px solid red; */
-	border-bottom-left-radius: 2px;
-	border-bottom-right-radius: 2px;
-	width: 300px;
-	height: 40px;
-	font-size: 14px;
+
+.welcome {
+    position: absolute;
+    background-color: rgba(241, 245, 248, 0.5);
+    top: -100px;
+    left: 40%;
+    /* border: 1px solid red; */
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    width: 300px;
+    height: 40px;
+    font-size: 14px;
 }
-.welcome span{
-	display: block;
-	float: left;
-	height: 40px;
-	line-height: 40px;
-	/* text-indent: 2rem; */
-	margin-left: 10px;
-	/* letter-spacing: 2px; */
+
+.welcome span {
+    display: block;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    /* text-indent: 2rem; */
+    margin-left: 10px;
+    /* letter-spacing: 2px; */
 }
-.welcome a{
-	height: 40px;
-	line-height: 40px;
-	display: block;
-	float: right;
-	color: #33a3dc;
-	margin-right: 10px;
+
+.welcome a {
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    float: right;
+    color: #33a3dc;
+    margin-right: 10px;
 }
-.welcome a:hover{
-	color: white;
+
+.welcome a:hover {
+    color: white;
 }
+
+
 /* 验证 */
-.sp-stu{
-	position: absolute;
-	top: 20%;
-	right: -20%;
-	font-size: 12px;
-	color: red;
-	opacity: 0;
-	width: 80px;
-	height: 20px;
-	transition: all 0.1s linear;
-	-webkit-transition: all 0.1s linear;
-	-moz-transition: all 0.1s linear;
-	-ms-transition: all 0.1s linear;
+
+.sp-stu {
+    position: absolute;
+    top: 20%;
+    right: -20%;
+    font-size: 12px;
+    color: red;
+    opacity: 0;
+    width: 80px;
+    height: 20px;
+    transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
 }
+
 @media screen and (max-width:900px) {
-	.stu-wrapper{
-		margin-left: 15%;
-	}
+    .stu-wrapper {
+        margin-left: 15%;
+    }
 }

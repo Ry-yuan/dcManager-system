@@ -196,7 +196,8 @@ $(function() {
     $('.ensure').click(function() {
         //当复选框没有选中，则不能点击
         if (isCheck == false || filesList == '') {
-            return false }
+            return false
+        }
         $('.loading').text('正在上传');
         $('.checkbox input[type=radio]').each(function() {
             if ($(this).is(':checked')) {
@@ -360,12 +361,7 @@ $(function() {
                 });
                 $.each(data, function(commentIndex, comment) {
                         //跳过以加载的内容，并获取没加载的内容
-                        // if(commentIndex+1>needRuntime){
-                        //    html += "<div class='allnews-list'><span class='point'></span><span class='date'>"+comment['date']+"</span><li><a href="+comment['path']+">"+comment['title']+"</a></li><span class='pull-down'></span><div class='dele'>删除</div></div>";
-                        //       runTime++;
-                        //       // 最后一个
-                        //       id=comment['id'];
-                        // }
+
                         if (commentIndex + 1 == clickNum * loadNum) {
                             return false;
                         }

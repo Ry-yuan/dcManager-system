@@ -1,45 +1,53 @@
-.stu-project{
-	display: none;
+.stu-project {
+    display: none;
 }
-.stu-project table{
-	width: 100%;
-	/* border: 1px solid #ccc; */
+
+.stu-project table {
+    width: 100%;
+    /* border: 1px solid #ccc; */
 }
-.stu-project table td{
-	width: 11.1%;
-	text-align: center;
-	/* border: 1px solid red; */
+
+.stu-project table td {
+    width: 11.1%;
+    text-align: center;
+    /* border: 1px solid red; */
 }
-.stu-project table thead td{
-	font-weight: bold;
-	height: 60px;
-	background-color: #8abadd;
-	color: white;
+
+.stu-project table thead td {
+    font-weight: bold;
+    height: 60px;
+    background-color: #8abadd;
+    color: white;
 }
-.stu-project table tbody td{
-	height: 40px;
-	background-color: #d8f0f4;
+
+.stu-project table tbody td {
+    height: 40px;
+    background-color: #d8f0f4;
 }
-.stu-project table tbody td span{
-	width: 50%;
-	color: #33a3dc;
-	font-size: 13px;
-	margin-right: 10px;
-	text-align: center;
-	cursor: pointer;
+
+.stu-project table tbody td span {
+    width: 50%;
+    color: #33a3dc;
+    font-size: 13px;
+    margin-right: 10px;
+    text-align: center;
+    cursor: pointer;
 }
-.stu-project table tbody td span:hover{
-	color: blue;
+
+.stu-project table tbody td span:hover {
+    color: blue;
 }
-.stu-sideBar{
-	float: left;
-	width: 80px;
-	height: 300px;
-	/* border: 1px solid red; */
-	background-color: #8abadd;
-	position: absolute;
-	top: 230px;
+
+.stu-sideBar {
+    float: left;
+    width: 80px;
+    height: 210px;
+    /* border: 1px solid red; */
+    background-color: #8abadd;
+    position: absolute;
+    top: 230px;
 }
-.stu-sideBar .icon{
-	margin-top: 60px;
+
+.stu-sideBar .icon {
+    margin-top: 60px;
 }

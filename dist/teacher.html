@@ -1,181 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>指导老师界面</title>
-	<link rel="stylesheet" type="text/css" href="css/controller.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css">
-	<link rel="stylesheet" type="text/css" href="css/student.css">
-	<link rel="stylesheet" type="text/css" href="css/circle.css">
-	<link rel="stylesheet" type="text/css" href="css/teacher.css">
-	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
-	<!-- <script type="text/javascript" src="js/student.js"></script> -->
+    <meta charset="UTF-8">
+    <title>指导老师界面</title>
+    <link rel="stylesheet" type="text/css" href="css/controller.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/student.css">
+    <link rel="stylesheet" type="text/css" href="css/circle.css">
+    <link rel="stylesheet" type="text/css" href="css/teacher.css">
+    <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+    <!-- <script type="text/javascript" src="js/student.js"></script> -->
 </head>
-	<body class="body">
-			<!-- 头部 -->
-			<header class="ctrl-header">
-				<div class="ctrl-logo"></div>
-				<div class="blue-bar"></div>
-				<!-- 12.8 -->
-				<div class="welcome"><div id="welcomMag"><span>欢迎您:</span><span>钟雪灵老师</span></div><a href="#">注销</a></div>
-			</header>
-			<section class="stu-sideBar ">
-				<dl class="icon" id="btn-teacher">
-					<dt class="icon-person">
-						<dd>个人信息</dd>
-					</dt>
-				</dl>
-				<dl class="icon" id="btn-stuproject">
-					<dt class="icon-myproject">
-						<dd>学生项目</dd>
-					</dt>
-				</dl>
-			</section>
-			<!-- 内容外层 -->
-			<section class="stu-wrapper" >
-				<p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">用户登录</a>--<a href="#">个人信息</a></p>
-				<!-- 个人信息 -->
-				<form id="userMag" action="http://localhost:8080/System/StudentServlet?method=updateInformation" method="post">
-				<div class="person-mag personMag">
-					<div class="mag-list"><p>姓名:</p><input type="text" name="name"  id="name" ></input></div>
-					<div class="mag-list"><p>工号:</p><input type="text" name="num" id="num"></input></div>
-					
-					<div class="mag-list"><p>手机号码:</p><input type="text" name="phone" id="phone"></input><span class="sp-stu" id="check-phone">格式错误</span></div>
-					<div class="mag-list"><p>电子邮件:</p><input type="text" name="email" id="email"></input><span class="sp-stu" id="check-email">格式错误</span></div>
-					<ul class="btn-box">
-					<li>修改</li>
-					<li class="person-sure">确定</li>
-				</ul>
-				</div>
-				</form>
+
+<body class="body">
+    <!-- 头部 -->
+    <header class="ctrl-header">
+        <div class="ctrl-logo"></div>
+        <div class="blue-bar"></div>
+        <!-- 12.8 -->
+        <div class="welcome">
+            <div id="welcomMag"><span>欢迎您:</span><span>钟雪灵老师</span></div><a href="#">注销</a></div>
+    </header>
+    <section class="stu-sideBar ">
+        <dl class="icon" id="btn-stuproject">
+            <dt class="icon-myproject">
+                <dd>学生项目</dd>
+            </dt>
+        </dl>
+    </section>
+    <!-- 内容外层 -->
+    <section class="stu-wrapper">
+        <p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">用户登录</a>--<a href="#">学生项目</a></p>
+        <!-- 学生项目 -->
+        <div class="person-mag stu-project">
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <td ><span class="select-all">全选</span><span class="dele-all">清空</span></td> -->
+                        <td>项目名称</td>
+                        <td>项目编号</td>
+                        <td>项目类别</td>
+                        <td>指导老师</td>
+                        <td>填报人</td>
+                        <td>填报日期</td>
+                        <td>项目状态</td>
+                        <td>分数</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- 12-10 -->
+    <!-- 遮幕，正在上传动画 -->
+    <div class="ctrl-overlay">
+        <div class="circle-box2">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>
+        </div>
+        <div class="loading">正在上传</div>
+    </div>
+    <!-- js -->
+    <script type="text/javascript">
+    $(function() {
+        function changeList(btnId, changId) {
+            $(btnId).click(function() {
+                var mypos = $(this).find('dd').text();
+                $('.ctrl-pos a:eq(2)').text(mypos)
+                $('.person-mag').css({
+                    display: 'none'
+                });
+                $(changId).fadeIn(50);
+            });
+        }
+        changeList('#btn-teacher', '.personMag');
+        changeList('#btn-stuproject', '.stu-project');
+        //学生项目按点击ajax加载
+        $('#btn-stuproject').click(function() {
+            $.ajax({
+                // url: 'http://localhost:8080/System/ManagerServlet?method=getFileList&type='+boxType,
+                url: 'http://localhost:8080/System/TutorServlet?method=getProject&tutorNum=10000',
+                type: 'POST',
+                dataType: 'json',
+                // data: {param1: 'value1'},
+                // beforeSend:beforeSent,
+                success: function(data) {
+                    $('.stu-project table tbody').empty();
+                    var tableHtml = '';
+                    $.each(data, function(magIndex, mag) {
+                        tableHtml += "<tr ><td>" + mag['projectName'] + "</td><td>" + mag['projectNum'] + "</td><td>" + mag['projectType'] + "</td><td>" + mag['tutor'] + "</td><td>" + mag['captain'] + "</td><td>" + mag['dateTime'] + "</td><td>" + mag['status'] + "</td><td>0</td><td><span class='check-pj'><a href='http://localhost:8080/System/TutorServlet?method=download&num=" + mag['projectNum'] + "'>查看</a></span><span class='verify-pj' data-num=" + mag['projectNum'] + " data-status=" + mag['status'] + ">通过</span></td></tr>";
+                    });
+                    $('.stu-project table tbody').append(tableHtml);
+                }
+            });
+        });
+        $('.welcome').animate({
+            top: '0'
+        });
 
 
-				<!-- 学生项目 -->
-				<div class="person-mag stu-project">
-				<table>
-					<thead>
-						<tr>
-							<!-- <td ><span class="select-all">全选</span><span class="dele-all">清空</span></td> -->
-							<td>项目名称</td>
-							<td>项目编号</td>
-							<td>项目类别</td>
-							<td>指导老师</td>
-							<td>填报人</td>
-							<td>填报日期</td>
-							<td>项目状态</td>
-							<td>分数</td>
-							<td>操作</td>
-						</tr>
-					</thead>
-					<tbody>
-						
-					</tbody>
-				</table>
-			</div>
-				</section>
-				<!-- 12-10 -->
-				<!-- 遮幕，正在上传动画 -->
-	    <div class="ctrl-overlay">
-	      <div class="circle-box2">
-	            <div class="sk-circle">
-	                <div class="sk-circle1 sk-child"></div>
-	                <div class="sk-circle2 sk-child"></div>
-	                <div class="sk-circle3 sk-child"></div>
-	                <div class="sk-circle4 sk-child"></div>
-	                <div class="sk-circle5 sk-child"></div>
-	                <div class="sk-circle6 sk-child"></div>
-	                <div class="sk-circle7 sk-child"></div>
-	                <div class="sk-circle8 sk-child"></div>
-	                <div class="sk-circle9 sk-child"></div>
-	                <div class="sk-circle10 sk-child"></div>
-	                <div class="sk-circle11 sk-child"></div>
-	                <div class="sk-circle12 sk-child"></div>
-	          </div>
-	    </div>
-	    <div class="loading">正在上传</div>
-	    </div>
-			<!-- js -->
-			<script type="text/javascript">
-				$(function(){
-					function changeList(btnId,changId){
-					$(btnId).click(function(){
-						var mypos=$(this).find('dd').text();
-						$('.ctrl-pos a:eq(2)').text(mypos)
-						$('.person-mag').css({display:'none'});
-						$(changId).fadeIn(50);
-						});
-					}
-					changeList('#btn-teacher','.personMag');
-					changeList('#btn-stuproject','.stu-project');
-					//学生项目按点击ajax加载
-					$('#btn-stuproject').click(function(){
-			  			$.ajax({
-			            // url: 'http://localhost:8080/System/ManagerServlet?method=getFileList&type='+boxType,
-			               url:  'http://localhost:8080/System/TutorServlet?method=getProject&tutorNum=10000',
-			              type: 'POST',
-			              dataType: 'json',
-			              // data: {param1: 'value1'},
-			              // beforeSend:beforeSent,
-			              success:function(data) {
-			                $('.stu-project table tbody').empty();
-			                var tableHtml='';
-			                $.each(data,function(magIndex,mag){
-			                  tableHtml +="<tr ><td>"+mag['projectName']+"</td><td>"+mag['projectNum']+"</td><td>"+mag['projectType']+"</td><td>"+mag['tutor']+"</td><td>"+mag['captain']+"</td><td>"+mag['dateTime']+"</td><td>"+mag['status']+"</td><td>0</td><td><span class='check-pj'><a href='http://localhost:8080/System/TutorServlet?method=download&num="+mag['projectNum']+"'>查看</a></span><span class='verify-pj' data-num="+mag['projectNum']+" data-status="+mag['status']+">通过</span></td></tr>";
-			                });
-			                $('.stu-project table tbody').append(tableHtml);
-			              }
-						});
-					});	
-					$('.welcome').animate({top:'0'});
+        // 审核通过按钮
+        var pjNum = '';
+        var pjStatus = '';
+        $('.body').delegate('.verify-pj', 'click', function() {
+            // alert('ok');
+            pjNum = $(this).attr("data-num");
+            pjStatus = $(this).attr("data-status");
+            // 12-10
+            $('.loading').text('审核提交');
 
-
-					// 审核通过按钮
-				var pjNum='';
-				var pjStatus='';
-				$('.body').delegate('.verify-pj','click',function(){
-				    // alert('ok');
-				    pjNum=$(this).attr("data-num");
-				    pjStatus=$(this).attr("data-status");
-				    // 12-10
-  					$('.loading').text('审核提交');
-
-				    // alert(pjStatus);
-				  $.ajax({
-					  url: 'http://localhost:8080/System/TutorServlet?method=changeStatus',
-				    type: 'POST',
-				    dataType: 'json',
-				    data: {projectNum: pjNum,status:pjStatus},
-				    // 12-10
-				    beforeSend:function(){
-				      var bh = window.screen.height;  //获取当前浏览器界面的高度
-				        var bw = document.body.clientWidth;   //获取当前浏览器界面的宽度
-				        $(".ctrl-overlay").css({
-				            height:bh,      //给遮盖层的div的高宽度赋值
-				            width:bw,
-				      }).fadeIn(100);
-				        // 出现等待动画
-				      $('.circle-box2 .sk-circle').fadeIn();
-				    },
-					success:function(data){
-				          $('.stu-project table tbody').empty();
-				          var tableHtml='';
-				          $.each(data,function(magIndex,mag){
-				          tableHtml +="<tr ><td>"+mag['projectName']+"</td><td>"+mag['projectNum']+"</td><td>"+mag['projectType']+"</td><td>"+mag['tutor']+"</td><td>"+mag['captain']+"</td><td>"+mag['dateTime']+"</td><td>"+mag['status']+"</td><td>0</td><td><span class='check-pj'>查看</span><span class='verify-pj' data-num="+mag['projectNum']+" data-status="+mag['status']+">通过</span></td></tr>";
-				                });
-				          $('.stu-project table tbody').append(tableHtml);
-				          // 12-10
-				          $(".ctrl-overlay").fadeOut();
-				          // 出现等待动画
-				          $('.circle-box2 .sk-circle').fadeOut();
-				          // alert('ok');
-				    },
-				    error:function(){
-				      alert('审核ok');
-				    }
-				  });
-				});
-				});
-				
-
-			</script>
-	</body>
+            // alert(pjStatus);
+            $.ajax({
+                url: 'http://localhost:8080/System/TutorServlet?method=changeStatus',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    projectNum: pjNum,
+                    status: pjStatus
+                },
+                // 12-10
+                beforeSend: function() {
+                    var bh = window.screen.height; //获取当前浏览器界面的高度
+                    var bw = document.body.clientWidth; //获取当前浏览器界面的宽度
+                    $(".ctrl-overlay").css({
+                        height: bh, //给遮盖层的div的高宽度赋值
+                        width: bw,
+                    }).fadeIn(100);
+                    // 出现等待动画
+                    $('.circle-box2 .sk-circle').fadeIn();
+                },
+                success: function(data) {
+                    $('.stu-project table tbody').empty();
+                    var tableHtml = '';
+                    $.each(data, function(magIndex, mag) {
+                        tableHtml += "<tr ><td>" + mag['projectName'] + "</td><td>" + mag['projectNum'] + "</td><td>" + mag['projectType'] + "</td><td>" + mag['tutor'] + "</td><td>" + mag['captain'] + "</td><td>" + mag['dateTime'] + "</td><td>" + mag['status'] + "</td><td>0</td><td><span class='check-pj'>查看</span><span class='verify-pj' data-num=" + mag['projectNum'] + " data-status=" + mag['status'] + ">通过</span></td></tr>";
+                    });
+                    $('.stu-project table tbody').append(tableHtml);
+                    // 12-10
+                    $(".ctrl-overlay").fadeOut();
+                    // 出现等待动画
+                    $('.circle-box2 .sk-circle').fadeOut();
+                    // alert('ok');
+                },
+                error: function() {
+                    alert('审核ok');
+                }
+            });
+        });
+    });
+    </script>
+</body>

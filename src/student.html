@@ -8,210 +8,165 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/student.css">
     <link rel="stylesheet" type="text/css" href="css/circle.css">
-    <script type="text/javascript" src="assets/jquery-3.0.0.min.js"></script>
-    <script type="text/javascript" src="js/student.js"></script>
 </head>
+<script type="text/javascript" src="assets/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="assets/vue.min.js"></script>
+<script type="text/javascript" src="js/student.js"></script>
 
 <body class="body">
     <!-- 头部 -->
-    <header class="ctrl-header">
-        <div class="ctrl-logo"></div>
-        <div class="blue-bar"></div>
-        <!-- 12.8 -->
-        <div class="welcome">
-            <div id="welcomMag"><span>欢迎你:&nbsp&nbsp151543107</span><span>曹志鑫同学</span></div><a href="#">注销</a></div>
-    </header>
-    <section class="sideBar">
-        <dl class="icon" id="btn-person">
-            <dt class="icon-person">
-                <dd>个人信息</dd>
-            </dt>
-        </dl>
-        <dl class="icon" id="btn-declare">
-            <dt class="icon-declare">
-                <dd>项目申报</dd>
-            </dt>
-        </dl>
-        <dl class="icon" id="btn-project">
-            <dt class="icon-myproject">
-                <dd>我的项目</dd>
-            </dt>
-        </dl>
-        <dl class="icon" id="btn-proCheck">
-            <dt class="icon-check">
-                <dd>中期检查</dd>
-            </dt>
-        </dl>
-        <dl class="icon" id="btn-finish">
-            <dt class="icon-project">
-                <dd>结项审核</dd>
-            </dt>
-        </dl>
-    </section>
-    <section class="stu-wrapper">
-        <p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">用户登录</a>--<a href="#">个人信息</a></p>
-        <!-- 个人信息 -->
-        <form id="userMag" action="http://localhost:8080/System/StudentServlet?method=updateInformation" method="post">
-            <div class="person-mag personMag">
-                <div class="mag-list">
-                    <p>姓名:</p>
-                    <input type="text" name="name" id="name"></input>
+    <div id="student">
+        <header class="ctrl-header">
+            <div class="ctrl-logo"></div>
+            <div class="blue-bar"></div>
+            <!-- 12.8 -->
+            <div class="welcome">
+                <div id="welcomMag"><span>欢迎你:&nbsp&nbsp151543107</span><span>曹志鑫同学</span></div><a href="#">注销</a></div>
+        </header>
+        <section class="sideBar">
+            <dl class="icon icon1" id="btn-declare" @click="key=1">
+                <dt class="icon-declare">
+                    <dd>项目申报</dd>
+                </dt>
+            </dl>
+            <dl class="icon" id="btn-project" @click="key=2">
+                <dt class="icon-myproject">
+                    <dd>我的项目</dd>
+                </dt>
+            </dl>
+            <dl class="icon" id="btn-proCheck" @click="key=3">
+                <dt class="icon-check">
+                    <dd>中期检查</dd>
+                </dt>
+            </dl>
+            <dl class="icon" id="btn-finish" @click="key=4">
+                <dt class="icon-project">
+                    <dd>结项审核</dd>
+                </dt>
+            </dl>
+        </section>
+        <section class="stu-wrapper">
+            <p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">用户登录</a>--<a href="#">项目申报</a></p>
+            <form v-if="key==1" id="projectIssue" action="http://localhost:8080/System/StudentServlet?method=declaredProject" method="post" enctype="multipart/form-data">
+                <div class="person-mag declare">
+                    <div class="mag-list">
+                        <p>项目名称:</p>
+                        <input type="text" name="projectName" id="projectName"></input>
+                    </div>
+                    <div class="mag-list">
+                        <p>指导老师:</p>
+                        <input type="text" name="tutor" id="tutor" placeholder="工号,名字"></input>
+                    </div>
+                    <div class="mag-list">
+                        <p>组员:</p>
+                        <input type="text" name="projectMember" id="projectMember" placeholder="15131432,15145214"></input>
+                    </div>
+                    <div class="mag-list">
+                        <p>系别:</p>
+                        <select name="department" id="department">
+                            <option>互联网金融与信息工程系</option>
+                            <option>金融系</option>
+                            <option>会计系</option>
+                            <option>外语系</option>
+                        </select>
+                    </div>
+                    <div class="mag-list">
+                        <p>手机号码:</p>
+                        <input type="text" name="phone"></input>
+                    </div>
+                    <div class="mag-list">
+                        <p>项目类型:</p>
+                        <div class="radio-box">
+                            <input type="radio" name="projectType" value='理工'></input><span>理工</span>
+                            <input type="radio" name="projectType" value='经管'></input><span>经管</span></div>
+                    </div>
+                    <div class="mag-list">
+                        <p>研究开始时间:</p>
+                        <input type="date" name="startDate"></input>
+                    </div>
+                    <div class="mag-list">
+                        <p>研究结束时间:</p>
+                        <input type="date" name="endDate"></input>
+                    </div>
+                    <div class="mag-list">
+                        <p>申请表格:</p>
+                        <div class="up-project"><span>点击上传<input id="projectTable" type="file" name="projectFile"></span></div>
+                    </div>
+                    <ul class="btn-box">
+                        <li>修改</li>
+                        <li class="project-sure">确定</li>
+                    </ul>
                 </div>
-                <div class="mag-list">
-                    <p>学号:</p>
-                    <input type="text" name="num" id="num"></input>
-                </div>
-                <div class="mag-list">
-                    <p>系别:</p>
-                    <select name="department" id="department">
-                        <option>互联网金融与信息工程系</option>
-                        <option>金融系</option>
-                        <option>会计系</option>
-                        <option>外语系</option>
-                    </select>
-                </div>
-                <div class="mag-list">
-                    <p>专业:</p>
-                    <input type="text" name="major" id="major"></input>
-                </div>
-                <div class="mag-list">
-                    <p>手机号码:</p>
-                    <input type="text" name="phone" id="phone"></input>
-                </div>
-                <div class="mag-list">
-                    <p>电子邮件:</p>
-                    <input type="text" name="email" id="email"></input>
-                </div>
-                <ul class="btn-box">
-                    <li>修改</li>
-                    <li class="person-sure">确定</li>
-                    <!-- <input type="submit" value="提交" /> -->
-                </ul>
+            </form>
+            <!-- 我的项目 -->
+            <div class="person-mag myproject" v-cloak v-if="key==2">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>项目名称</td>
+                            <td>指导老师</td>
+                            <td>等级</td>
+                            <td>项目状态</td>
+                            <td>操作</td>
+                            <td>反馈意见</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>电商平台</td>
+                            <td>韩冬</td>
+                            <td>创新实验项目</td>
+                            <td>(009)指导老师审核</td>
+                            <td><span class="check-pj">查看</span><span class="reset-pj">撤回</span></td>
+                            <td><span>点击查看</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </form>
-        <form id="projectIssue" action="http://localhost:8080/System/StudentServlet?method=declaredProject" method="post" enctype="multipart/form-data">
-            <div class="person-mag declare">
-                <div class="mag-list">
-                    <p>项目名称:</p>
-                    <input type="text" name="projectName" id="projectName"></input>
+            <!-- 中期项目 -->
+            <div class="person-mag middle-check checking" v-cloak v-if="key==3">
+                <div class="upload-box">
+                    <input id="fileUpload1" class="upload" type="file" multiple="multiple" title="添加文件"></input>
+                    <p class="middle-btn">上传中期评审报告书</p>
                 </div>
-                <div class="mag-list">
-                    <p>指导老师:</p>
-                    <input type="text" name="tutor" id="tutor" placeholder="工号,名字"></input>
-                </div>
-                <div class="mag-list">
-                    <p>组员:</p>
-                    <input type="text" name="projectMember" id="projectMember" placeholder="15131432,15145214"></input>
-                </div>
-                <div class="mag-list">
-                    <p>系别:</p>
-                    <select name="department" id="department">
-                        <option>互联网金融与信息工程系</option>
-                        <option>金融系</option>
-                        <option>会计系</option>
-                        <option>外语系</option>
-                    </select>
-                </div>
-                <div class="mag-list">
-                    <p>手机号码:</p>
-                    <input type="text" name="phone"></input>
-                </div>
-                <div class="mag-list">
-                    <p>项目类型:</p>
-                    <div class="radio-box">
-                        <input type="radio" name="projectType" value='理工'></input><span>理工</span>
-                        <input type="radio" name="projectType" value='经管'></input><span>经管</span></div>
-                </div>
-                <div class="mag-list">
-                    <p>研究开始时间:</p>
-                    <input type="date" name="startDate"></input>
-                </div>
-                <div class="mag-list">
-                    <p>研究结束时间:</p>
-                    <input type="date" name="endDate"></input>
-                </div>
-                <div class="mag-list">
-                    <p>申请表格:</p>
-                    <div class="up-project"><span>点击上传<input id="projectTable" type="file" name="projectFile"></span></div>
-                </div>
-                <ul class="btn-box">
-                    <li>修改</li>
-                    <li class="project-sure">确定</li>
-                    <!-- <input type="submit" value="提交" /> -->
-                </ul>
             </div>
-        </form>
-        <!-- 我的项目 -->
-        <div class="person-mag myproject">
-            <table>
-                <thead>
-                    <tr>
-                        <td>项目名称</td>
-                        <td>项目编号</td>
-                        <td>项目类别</td>
-                        <td>项目状态</td>
-                        <td>指导老师</td>
-                        <td>填报人</td>
-                        <td>填报日期</td>
-                        <td>操作</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>电商平台</td>
-                        <td><span class="check-pj">查看</span><span class="reset-pj">撤回</span></td>
-                        <td>12412</td>
-                        <td>创新实验项目</td>
-                        <td>(009)指导老师审核</td>
-                        <td>黎明</td>
-                        <td>2016.09.10</td>
-                    </tr>
-                </tbody>
-            </table>
+            <!-- 结项审核 -->
+            <div class="person-mag final-check checking" v-cloak v-if="key==4">
+                <div class="upload-box final-check1">
+                    <input id="fileUpload2" class="upload" type="file" multiple="multiple" title="添加文件"></input>
+                    <p class="final-btn1">上传成果展示</p>
+                </div>
+                <div class="upload-box final-check2">
+                    <input id="fileUpload3" class="upload" type="file" multiple="multiple" title="添加文件"></input>
+                    <p class="final-btn2">上传结项报告书</p>
+                </div>
+            </div>
+        </section>
+        <div class="ctrl-overlay">
+            <div class="circle-box2">
+                <div class="sk-circle">
+                    <div class="sk-circle1 sk-child"></div>
+                    <div class="sk-circle2 sk-child"></div>
+                    <div class="sk-circle3 sk-child"></div>
+                    <div class="sk-circle4 sk-child"></div>
+                    <div class="sk-circle5 sk-child"></div>
+                    <div class="sk-circle6 sk-child"></div>
+                    <div class="sk-circle7 sk-child"></div>
+                    <div class="sk-circle8 sk-child"></div>
+                    <div class="sk-circle9 sk-child"></div>
+                    <div class="sk-circle10 sk-child"></div>
+                    <div class="sk-circle11 sk-child"></div>
+                    <div class="sk-circle12 sk-child"></div>
+                </div>
+            </div>
+            <div class="loading">正在提交</div>
         </div>
-        <!-- 中期项目 -->
-        <div class="person-mag middle-check checking">
-            <div class="upload-box">
-                <input id="fileUpload1" class="upload" type="file" multiple="multiple" title="添加文件"></input>
-                <p class="middle-btn">上传中期评审报告书</p>
-            </div>
+        <div class="load-icon load-success">
+            <p>提交成功</p>
         </div>
-        <!-- 结项审核 -->
-        <div class="person-mag final-check checking">
-            <div class="upload-box final-check1">
-                <input id="fileUpload2" class="upload" type="file" multiple="multiple" title="添加文件"></input>
-                <p class="final-btn1">上传成果展示</p>
-            </div>
-            <div class="upload-box final-check2">
-                <input id="fileUpload3" class="upload" type="file" multiple="multiple" title="添加文件"></input>
-                <p class="final-btn2">上传结项报告书</p>
-            </div>
+        <div class="load-icon load-false">
+            <p>提交失败</p>
         </div>
-    </section>
-    <div class="ctrl-overlay">
-        <div class="circle-box2">
-            <div class="sk-circle">
-                <div class="sk-circle1 sk-child"></div>
-                <div class="sk-circle2 sk-child"></div>
-                <div class="sk-circle3 sk-child"></div>
-                <div class="sk-circle4 sk-child"></div>
-                <div class="sk-circle5 sk-child"></div>
-                <div class="sk-circle6 sk-child"></div>
-                <div class="sk-circle7 sk-child"></div>
-                <div class="sk-circle8 sk-child"></div>
-                <div class="sk-circle9 sk-child"></div>
-                <div class="sk-circle10 sk-child"></div>
-                <div class="sk-circle11 sk-child"></div>
-                <div class="sk-circle12 sk-child"></div>
-            </div>
-        </div>
-        <div class="loading">正在提交</div>
-    </div>
-    <div class="load-icon load-success">
-        <p>提交成功</p>
-    </div>
-    <div class="load-icon load-false">
-        <p>提交失败</p>
     </div>
 </body>
 

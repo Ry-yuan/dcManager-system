@@ -1,124 +1,70 @@
 $(function() {
-    /*function changeList(btnId, changId) {
-        $(btnId).click(function() {
-            var mypos = $(this).find('dd').text();
-            $('.ctrl-pos a:eq(2)').text(mypos)
-            $('.person-mag').css({ display: 'none' });
-            $(changId).fadeIn(50);
-        });
-    }
-    changeList('#btn-person', '.personMag');
-    changeList('#btn-declare', '.declare');
-    changeList('#btn-project', '.myproject');
-    changeList('#btn-proCheck', '.middle-check');
-    changeList('#btn-finish', '.final-check');*/
-
-
+    // vue实例
     var stuVue = new Vue({
         el: '#student',
         data: {
-            key: 1
+            key: 1,
+            // 我的项目数据
+            myProject: []
         },
-        mothods: {
-
-        }
+        mothods: {}
     });
 
+    // 遮罩层+loading动画
+    function waitingShow() {
+        // 文字显示隐藏
+        $(".ctrl-overlay .loading").html(' ');
+        // 遮罩层出现
+        $(".ctrl-overlay").css({
+            //给遮盖层的div的高宽度赋值
+            height: $(document).height(),
+        }).fadeIn(100);
+        // 出现等待动画
+        $('.circle-box2 .sk-circle').fadeIn();
+    }
 
 
-    // 个人信息确定
-    $('.person-sure').click(function() {
-        $.ajax({
-            url: 'http://localhost:8080/System/StudentServlet?method=updateInformation',
-            //          url: 'my.php',
-            type: 'POST',
-            dataType: 'text',
-            data: {
-                name: $('#name').val(),
-                num: $('#num').val(),
-                department: $('#department').val(),
-                major: $('#major').val(),
-                phone: $('#phone').val(),
-                email: $('#email').val(),
-            },
-            beforeSend: function() {
-                var bh = window.screen.height; //获取当前浏览器界面的高度
-                var bw = document.body.clientWidth; //获取当前浏览器界面的宽度
-                $(".ctrl-overlay").css({
-                    height: bh, //给遮盖层的div的高宽度赋值
-                    width: bw,
-                }).fadeIn(100);
-                // 出现等待动画菊花
-                $('.circle-box2 .sk-circle').fadeIn();
-            },
-            success: function(data) {
-                // alert(data+"oko");
-                $(".ctrl-overlay").fadeOut(function() {
-                    $('.load-success').fadeIn(100);
-                    // 上传成功延迟一会消失
-                    setTimeout(function() {
-                        $('.load-success').fadeOut(100);
-                    }, 1000);
-                });
-            },
-            error: function() {
-                $(".ctrl-overlay").fadeOut(function() {
-                    $('.load-false').fadeIn(100);
-                    // 上传信息延迟一会消失
-                    setTimeout(function() {
-                        $('.load-false').fadeOut(100);
-                    }, 1000);
-                });
-                // 等待动画
-                $('.circle-box2 .sk-circle').fadeOut();
-            }
+    //遮罩层+成功信息
+    function successStu() {
+        $(".ctrl-overlay").fadeOut(function() {
+            $('.load-success').fadeIn(100);
+            // 上传成功延迟一会消失
+            setTimeout(function() {
+                $('.load-success').fadeOut(100);
+            }, 1000);
         });
-    });
+        // 隐藏等待动画
+        $('.circle-box2 .sk-circle').fadeOut();
+    }
+
+    // 遮罩层+失败信息
+    function errorStu() {
+        $(".ctrl-overlay").fadeOut(function() {
+            $('.load-false').fadeIn(100);
+            // 上传信息延迟一会消失
+            setTimeout(function() {
+                $('.load-false').fadeOut(100);
+            }, 1000);
+        });
+        $('.circle-box2 .sk-circle').fadeOut();
+    }
 
 
     // 项目申请确定
     $('.project-sure').click(function() {
         var formData = new FormData($("#projectIssue")[0]);
         $.ajax({
-            url: 'http://localhost:8080/System/StudentServlet?method=declaredProject',
+            // url: 'http://localhost:8080/System/StudentServlet?method=declaredProject',
+            url: '../assets/student.json',
             type: 'POST',
             data: formData,
             async: false,
             cache: false,
             contentType: false,
             processData: false,
-            beforeSend: function() {
-                var bh = window.screen.height; //获取当前浏览器界面的高度
-                var bw = document.body.clientWidth; //获取当前浏览器界面的宽度
-                $(".ctrl-overlay").css({
-                    height: bh, //给遮盖层的div的高宽度赋值
-                    width: bw,
-                }).fadeIn(100);
-                // 出现等待动画菊花
-                $('.circle-box2 .sk-circle').fadeIn();
-            },
-            success: function(data) {
-                // alert(data+"oko");
-                $(".ctrl-overlay").fadeOut(function() {
-                    $('.load-success').fadeIn(100);
-                    // 上传成功延迟一会消失
-                    setTimeout(function() {
-                        $('.load-success').fadeOut(100);
-                    }, 1000);
-                    //              $('.up-project span').css('backgroundColor',"#8abadd").text('点击上传');
-                });
-            },
-            error: function() {
-                $(".ctrl-overlay").fadeOut(function() {
-                    $('.load-false').fadeIn(100);
-                    // 上传信息延迟一会消失
-                    setTimeout(function() {
-                        $('.load-false').fadeOut(100);
-                    }, 1000);
-                });
-                // 等待动画
-                $('.circle-box2 .sk-circle').fadeOut();
-            }
+            beforeSend: waitingShow,
+            success: successStu(),
+            error: errorStu(),
         });
     });
 
@@ -127,23 +73,19 @@ $(function() {
     // 我的项目加载
     $('#btn-project').click(function() {
         $.ajax({
-            url: 'http://localhost:8080/System/StudentServlet?method=myProject',
-            //              url: 'project.json',
+            // url: 'http://localhost:8080/System/StudentServlet?method=myProject',
+            url: '../assets/student.json',
             type: 'GET',
             dataType: 'json',
             // data: {param1: 'value1'},
-            // beforeSend:beforeSent,
+            // beforeSend: waitingShow,
             success: function(data) {
-                $('.myproject table tbody').empty();
-                var tableHtml = '';
-                $.each(data, function(magIndex, mag) {
-                    tableHtml += "<tr><td>" + mag['projectName'] + "</td><td>" + mag['projectNum'] + "</td><td>" + mag['projectType'] + "</td><td>" + mag['status'] + "</td><td>" + mag['tutor'] + "</td><td>" + mag['captain'] + "</td><td>" + mag['dateTime'] + "</td><td><span class='check-pj'>查看</span><span class='reset-pj'>撤回</span></td></tr>"
-                        //                  tableHtml +="<tr><td>"+mag['projectName']+"</td><td><span class='check-pj'>查看</span><span class='reset-pj'>撤回</span></td><td>"+mag['projectNum']+"</td><td>"+mag['projectType']+"</td><td>"+mag['tutor']+"</td><td>"+mag['captain']+"</td><td>"+mag['dateTime']+"</td></tr>"
-                });
-                $('.myproject table tbody').append(tableHtml);
+                // console.log(data);
+                // 对vue数据赋值
+                stuVue.$data.myProject = data;
             },
             error: function() {
-                alert('error');
+                console.log('error');
             },
         });
     });
@@ -151,29 +93,29 @@ $(function() {
 
 
     // 个人信息按钮
-    $('#btn-person').click(function() {
+    /* $('#btn-person').click(function() {
 
-        $.ajax({
-            url: 'http://localhost:8080/System/StudentServlet?method=getStudentInformation',
-            type: 'POST',
-            dataType: 'json',
-            // data: {param1: 'value1'},
-            beforeSend: waitingStu,
-            success: function(data) {
-                $.each(data, function(magIndex, mag) {
-                    $("input[name=name]").val(mag['name']);
-                    $("input[name=num]").val(mag['num']);
-                    $("input[name=department]").val(mag['department']);
-                    $("input[name=major]").val(mag['major']);
-                    $("input[name=phone]").val(mag['phone']);
-                    $("input[name=email]").val(mag['email']);
-                });
-                $(".ctrl-overlay").fadeOut(100);
-            }
-        })
+     $.ajax({
+         url: 'http://localhost:8080/System/StudentServlet?method=getStudentInformation',
+         type: 'POST',
+         dataType: 'json',
+         // data: {param1: 'value1'},
+         beforeSend: waitingShow,
+         success: function(data) {
+             $.each(data, function(magIndex, mag) {
+                 $("input[name=name]").val(mag['name']);
+                 $("input[name=num]").val(mag['num']);
+                 $("input[name=department]").val(mag['department']);
+                 $("input[name=major]").val(mag['major']);
+                 $("input[name=phone]").val(mag['phone']);
+                 $("input[name=email]").val(mag['email']);
+             });
+             $(".ctrl-overlay").fadeOut(100);
+         }
+     })
 
-    });
-
+ });
+*/
 
 
     // 项目申报按钮
@@ -182,7 +124,7 @@ $(function() {
             url: 'http://localhost:8080/System/StudentServlet?method=getMyProject',
             type: 'POST',
             dataType: 'json',
-            // beforeSend:waitingStu,
+            // beforeSend:waitingShow,
             success: function(data) {
                 $.each(data, function(magIndex, mag) {
                     $("input[name=projectName]").val(mag['projectName']);
@@ -207,28 +149,28 @@ $(function() {
 
 
     // 加载个人信息
-    function loadPersonMag() {
-        $.ajax({
-            url: 'mymag.json',
-            type: 'POST',
-            dataType: 'json',
-            // data: {param1: 'value1'},
-            beforeSend: waitingStu,
-            success: function(data) {
-                $.each(data, function(magIndex, mag) {
-                    $("input[name=name]").val(mag['name']);
-                    $("input[name=num]").val(mag['num']);
-                    $("input[name=department]").val(mag['department']);
-                    $("input[name=major]").val(mag['major']);
-                    $("input[name=phone]").val(mag['phone']);
-                    $("input[name=email]").val(mag['email']);
-                });
-                $(".ctrl-overlay").fadeOut(100);
-            },
+    /*   function loadPersonMag() {
+       $.ajax({
+           url: 'mymag.json',
+           type: 'POST',
+           dataType: 'json',
+           // data: {param1: 'value1'},
+           beforeSend: waitingShow,
+           success: function(data) {
+               $.each(data, function(magIndex, mag) {
+                   $("input[name=name]").val(mag['name']);
+                   $("input[name=num]").val(mag['num']);
+                   $("input[name=department]").val(mag['department']);
+                   $("input[name=major]").val(mag['major']);
+                   $("input[name=phone]").val(mag['phone']);
+                   $("input[name=email]").val(mag['email']);
+               });
+               $(".ctrl-overlay").fadeOut(100);
+           },
 
-        })
-    }
-
+       })
+   }
+*/
 
 
     // 12.8出现欢迎语
@@ -281,33 +223,10 @@ $(function() {
 
 
 
-    // 等待动画
-    function waitingStu() {
-        // 禁止页面滚动
-        var bh = window.screen.height; //获取当前浏览器界面的高度
-        var bw = document.body.clientWidth; //获取当前浏览器界面的宽度
-        $(".ctrl-overlay .loading").html(' ');
-        $(".ctrl-overlay").css({
-            height: bh, //给遮盖层的div的高宽度赋值
-            width: bw,
-        }).fadeIn(100);
-        // 出现等待动画
-        $('.circle-box2 .sk-circle').fadeIn();
-    }
-    //先添加的
-    function successStu() {
-        $(".ctrl-overlay").fadeOut(function() {
-            $('.load-success').fadeIn(100);
-            // 上传成功延迟一会消失
-            setTimeout(function() {
-                $('.load-success').fadeOut(100);
-            }, 1000);
-        });
-        // 出现等待动画
-        $('.circle-box2 .sk-circle').fadeOut();
-    }
-    // 上传中期文件功能
 
+
+
+    // 上传中期文件功能
     $('#fileUpload1').change(function() {
         // uploadFilePath=$('#fileUpload1').val();
         $('.middle-btn').css({ backgroundColor: '#65c294', cursor: 'pointer' });
@@ -326,7 +245,7 @@ $(function() {
                 cache: false,
                 processData: false,
                 contentType: false,
-                beforeSend: waitingStu,
+                beforeSend: waitingShow,
                 success: function() {
                     successStu();
                     uploadFilePath = 0;

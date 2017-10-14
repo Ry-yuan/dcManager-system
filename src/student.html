@@ -112,13 +112,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>电商平台</td>
-                            <td>韩冬</td>
-                            <td>创新实验项目</td>
-                            <td>(009)指导老师审核</td>
+                        <tr v-for="item in myProject">
+                            <td>{{item.project}}</td>
+                            <td>{{item.teacher}}</td>
+                            <td>{{item.level}}</td>
+                            <td>{{item.status}}</td>
                             <td><span class="check-pj">查看</span><span class="reset-pj">撤回</span></td>
-                            <td><span>点击查看</span></td>
+                            <td><span @click="projectCheck(this)
+">点击查看</span></td>
                         </tr>
                     </tbody>
                 </table>

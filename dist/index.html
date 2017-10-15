@@ -142,16 +142,21 @@
     <!-- 用户登录 -->
     <div class="login">
         <div class="close"><img src="images/close.png"></div>
-        <div class="login-form"></div>
-        <p>大创系统登录</p>
-        <div class="input">
-            <input type="text" id="user" class="input-position input-style" name="user" placeholder="输入用户名"></input><span class="sp sp1"></span></div>
-        <div class="input">
-            <input type="password" id="pwd" class="input-position input-style" name="pwd" placeholder="输入密码"></input><span class="sp sp2"></span></div>
-        <button class="btn" id="popup-submit">登录</button>
-        <div class="input">
+        <p class="login-title">大创系统登录</p>
+        <div class="login-form">
+            <div class="input">
+                <input type="text" id="user" class="input-position input-style" name="user" placeholder="输入用户名"></input><span class="sp sp1"></span>
+            </div>
+            <div class="input">
+                <input type="password" id="pwd" class="input-position input-style" name="pwd" placeholder="输入密码"></input><span class="sp sp2"></span>
+            </div>
+            <!-- 验证码位置 -->
+            <div class="input">
+                <input class="login-verify input-style" placeholder="输入验证码"></input><span class="verify-box"><img class="verify-img" src="" alt="验证码图片"></span>
+            </div>
+            <!-- 登陆按钮 -->
+            <div class="btn" id="popup-submit">登录</div>
         </div>
-        <!-- <div id="popup-captcha"></div> -->
     </div>
     </div>
     <!-- 遮幕 -->

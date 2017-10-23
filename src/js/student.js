@@ -7,7 +7,7 @@ $(function() {
             // 我的项目数据
             myProject: []
         },
-        mothods: {}
+        methods: {}
     });
 
     // 遮罩层+loading动画

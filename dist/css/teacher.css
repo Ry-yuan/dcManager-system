@@ -1,4 +1,8 @@
 .stu-project {
+    /* display: none; */
+}
+
+[v-cloak] {
     display: none;
 }
 
@@ -25,17 +29,20 @@
     background-color: #d8f0f4;
 }
 
-.stu-project table tbody td span {
-    width: 50%;
-    color: #33a3dc;
-    font-size: 13px;
-    margin-right: 10px;
+.stu-project .operate-btn {
+    margin-right: 5px;
+    padding: 5px;
+    color: #2662A1;
+    font-size: 14px;
     text-align: center;
     cursor: pointer;
+    border-radius: 3px;
+    background: #fff;
 }
 
-.stu-project table tbody td span:hover {
-    color: blue;
+.stu-project .operate-btn:hover {
+    /* color: blue; */
+    background-color: #8abadd;
 }
 
 .stu-sideBar {
@@ -50,4 +57,52 @@
 
 .stu-sideBar .icon {
     margin-top: 60px;
+}
+
+
+/* 操作弹框样式 */
+.m-dailog{
+    margin-left: -175px;
+    position: absolute;
+    top:100px;
+    text-align: center;    
+    z-index: 10000;
+    left: 50%;
+    width: 350px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+/* 标题盒子 */
+.m-dailog .dailog-header{
+    height: 35px;
+    text-align: center;
+    color: #fff;
+    line-height: 35px;
+    background-color: #8abadd;
+}
+/* 内容盒子 */
+.m-dailog .dailog-content{
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+/* 按钮盒子 */
+.m-dailog .dailog-btn{
+    height: 50px;
+}
+.m-dailog .btn{
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    border-radius:5px;
+    cursor: pointer;
+}
+.m-dailog .btn-comfirm{
+    margin-right: 50px;
+    background-color: #5689BD;
+}
+.m-dailog .btn-cancel{
+    background-color: #E43939;
 }

@@ -13,61 +13,67 @@
 </head>
 
 <body class="body">
-    <!-- 弹框 -->
-    <section class="m-dailog">
-        <h4 class="dailog-header">撤销学生项目</h4>
-        <div class="dailog-content">你确定撤销该项目吗？</div>
-        <div class="dailog-btn">
-            <span class="btn btn-comfirm">确定</span>
-            <span class="btn btn-cancel">取消</span>
-        </div>
-    </section>
-    <!-- 头部 -->
-    <header class="ctrl-header">
-        <div class="ctrl-logo"></div>
-        <div class="blue-bar"></div>
-        <!-- 12.8 -->
-        <div class="welcome">
-            <div id="welcomMag"><span>欢迎您:</span><span>钟雪灵老师</span></div><a href="#">注销</a></div>
-    </header>
-    <section class="stu-sideBar ">
-        <dl class="icon" id="btn-stuproject">
-            <dt class="icon-myproject">
-                <dd>学生项目</dd>
-            </dt>
-        </dl>
-    </section>
-    <!-- 内容外层 -->
-    <section class="stu-wrapper" v-cloak id="teacher">
-        <p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">用户登录</a>--<a href="#">学生项目</a></p>
-        <!-- 学生项目 -->
-        <div class="person-mag stu-project">
-            <table>
-                <thead>
-                    <tr>
-                        <!-- <td ><span class="select-all">全选</span><span class="dele-all">清空</span></td> -->
-                        <td>项目名称</td>
-                        <td>项目负责人</td>
-                        <td>指导老师</td>
-                        <td>项目等级</td>
-                        <td>项目状态</td>
-                        <td>操作</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in studentProject">
-                        <!-- <td ><span class="select-all">全选</span><span class="dele-all">清空</span></td> -->
-                        <td>{{item.project}}</td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.teacher}}</td>
-                        <td>{{item.level}}</td>
-                        <td>{{item.status}}</td>
-                        <td><span class="operate-btn check-pj">查看</span><span class="operate-btn reset-pj">撤回</span><span class="operate-btn">通过</span>                            </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <!-- 内容区 -->
+    <div id="teacher">
+        <!-- 弹框 -->
+        <section class="m-dailog">
+            <h4 class="dailog-header">撤销学生项目</h4>
+            <div class="dailog-content">你确定撤销该项目吗？</div>
+            <div class="dailog-btn">
+                <span class="btn btn-comfirm">确定</span>
+                <span class="btn btn-cancel">取消</span>
+            </div>
+        </section>
+        <!-- 头部 -->
+        <header class="ctrl-header">
+            <div class="ctrl-logo"></div>
+            <div class="blue-bar"></div>
+            <!-- 12.8 -->
+            <div class="welcome">
+                <div id="welcomMag"><span>欢迎您:</span><span>钟雪灵老师</span></div><a href="#">注销</a></div>
+        </header>
+        <section class="stu-sideBar ">
+            <dl class="icon" id="btn-stuproject">
+                <dt class="icon-myproject">
+                    <dd>学生项目</dd>
+                </dt>
+            </dl>
+        </section>
+        <!-- 内容外层 -->
+        <section class="stu-wrapper" v-cloak>
+            <p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">用户登录</a>--<a href="#">学生项目</a></p>
+            <!-- 学生项目 -->
+            <div class="person-mag stu-project">
+                <table>
+                    <thead>
+                        <tr>
+                            <!-- <td ><span class="select-all">全选</span><span class="dele-all">清空</span></td> -->
+                            <td>项目名称</td>
+                            <td>项目负责人</td>
+                            <td>指导老师</td>
+                            <td>项目等级</td>
+                            <td>项目状态</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in studentProject">
+                            <!-- <td ><span class="select-all">全选</span><span class="dele-all">清空</span></td> -->
+                            <td>{{item.project}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.teacher}}</td>
+                            <td>{{item.level}}</td>
+                            <td>{{item.status}}</td>
+                            <td><span class="operate-btn check-pj">查看</span><span class="operate-btn reset-pj">撤回</span>
+                                <span class="operate-btn">通过</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
 
     <!-- 遮幕+loading动画 -->
     <div class="ctrl-overlay">

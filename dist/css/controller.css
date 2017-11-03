@@ -171,7 +171,9 @@
 
 .ctrl-pos {
     width: 90%;
-    font-size: 0.9rem;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
     border-bottom: 2px solid #33a3dc;
     margin-left: 5%;
     padding-top: 10px;

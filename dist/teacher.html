@@ -16,12 +16,12 @@
     <!-- 内容区 -->
     <div id="teacher">
         <!-- 弹框 -->
-        <section class="m-dailog">
-            <h4 class="dailog-header">撤销学生项目</h4>
-            <div class="dailog-content">你确定撤销该项目吗？</div>
+        <section  class="m-dailog" v-cloak v-bind:class="{hidden:hiddenDailog}">
+            <h3 class="dailog-header">撤销 {{recallProjectName}} 项目</h3>
+            <div class="dailog-content">您确定撤销该项目吗？</div>
             <div class="dailog-btn">
                 <span class="btn btn-comfirm">确定</span>
-                <span class="btn btn-cancel">取消</span>
+                <span class="btn btn-cancel" @click="cancleRecallProject">取消</span>
             </div>
         </section>
         <!-- 头部 -->
@@ -41,7 +41,7 @@
         </section>
         <!-- 内容外层 -->
         <section class="stu-wrapper" v-cloak>
-            <p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">用户登录</a>--<a href="#">学生项目</a></p>
+            <p class="ctrl-pos">当前位置：<a href="#">首页</a>|<a href="#">指导老师</a></p>
             <!-- 学生项目 -->
             <div class="person-mag stu-project">
                 <table>
@@ -64,8 +64,7 @@
                             <td>{{item.teacher}}</td>
                             <td>{{item.level}}</td>
                             <td>{{item.status}}</td>
-                            <td><span class="operate-btn check-pj">查看</span><span class="operate-btn reset-pj">撤回</span>
-                                <span class="operate-btn">通过</span>
+                            <td><span class="operate-btn check-pj">查看</span><span class="operate-btn reset-pj" @click="recallProject(item)" >撤项</span><span class="operate-btn">通过</span>
                             </td>
                         </tr>
                     </tbody>

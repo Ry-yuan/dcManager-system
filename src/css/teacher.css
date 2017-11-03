@@ -36,7 +36,6 @@
     font-size: 14px;
     text-align: center;
     cursor: pointer;
-    border-radius: 3px;
     background: #fff;
 }
 
@@ -48,7 +47,7 @@
 .stu-sideBar {
     float: left;
     width: 80px;
-    height: 210px;
+    height: 188px;
     /* border: 1px solid red; */
     background-color: #8abadd;
     position: absolute;
@@ -62,27 +61,27 @@
 
 /* 操作弹框样式 */
 .m-dailog{
-    margin-left: -175px;
+    margin-left: -250px;
     position: absolute;
     top:100px;
     text-align: center;    
     z-index: 10000;
     left: 50%;
-    width: 350px;
+    width: 500px;
     background-color: rgba(255, 255, 255, 0.9);
 }
 /* 标题盒子 */
 .m-dailog .dailog-header{
-    height: 35px;
+    height: 40px;
     text-align: center;
     color: #fff;
-    line-height: 35px;
-    background-color: #8abadd;
+    line-height: 40px;
+    background-color: #0f77c3;
 }
 /* 内容盒子 */
 .m-dailog .dailog-content{
-    height: 80px;
-    line-height: 80px;
+    height: 150px;
+    line-height: 150px;
     text-align: center;
 }
 /* 按钮盒子 */
@@ -105,4 +104,9 @@
 }
 .m-dailog .btn-cancel{
     background-color: #E43939;
+}
+
+.hidden{
+    display: none;
+    /* color: red; */
 }

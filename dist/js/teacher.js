@@ -17,16 +17,32 @@ $(function () {
     var teacher = new Vue({
         el: "#teacher",
         data: {
+            //撤销项目名
+            recallProjectName: null,
+            //默认隐藏撤项弹框
+            hiddenDailog: true,
             studentProject: []
         },
         methods: {
+            //撤项函数
+            recallProject: function (item) {
+                this.recallProjectName = item.project;
+                this.hiddenDailog = false;
+                // 遮罩层
+                showOverlay();
+            },
+            //取消撤项
+            cancleRecallProject:function(){
+                this.hiddenDailog = true;
+                $(".ctrl-overlay").fadeOut(100);
+            }
+
 
         }
     })
 
-
-     // 遮罩层+loading动画出现
-     function waitingShow() {
+    // 遮罩层出现函数
+    function showOverlay() {
         // 文字显示隐藏
         $(".ctrl-overlay .loading").html(' ');
         // 遮罩层出现
@@ -34,16 +50,21 @@ $(function () {
             //给遮盖层的div的高宽度赋值
             height: $(document).height(),
         }).fadeIn(100);
+    }
+
+    // 遮罩层+loading动画出现函数
+    function waitingShow() {
+        showOverlay();
         // 出现等待动画
         $('.circle-box2 .sk-circle').fadeIn();
     }
 
 
-     // 遮罩层+loading动画隐藏
-    function waitingHide(){
+    // 遮罩层+loading动画隐藏
+    function waitingHide() {
         $(".ctrl-overlay").fadeOut(100);
-           // 等待动画
-           $('.circle-box2 .sk-circle').fadeOut();
+        // 等待动画
+        $('.circle-box2 .sk-circle').fadeOut();
     }
 
 
@@ -56,7 +77,7 @@ $(function () {
             type: 'get',
             dataType: 'json',
             // data: {param1: 'value1'},
-            beforeSend:waitingShow,
+            beforeSend: waitingShow,
             success: function (data) {
                 teacher.$data.studentProject = data;
                 waitingHide();
@@ -82,7 +103,7 @@ $(function () {
     };
 
     getStudentProject();
-    
+
     //学生项目按点击ajax加载
     $('#btn-stuproject').click(getStudentProject);
 

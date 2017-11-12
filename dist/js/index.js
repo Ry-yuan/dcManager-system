@@ -97,14 +97,14 @@ $(function() {
                 backgroundColor: 'transparent',
                 opacity: '1',
             }).find('a').css({ color: '#000' }).hover(function() {
-                $(this).css({ color: '#33a3dc' })
+                $(this).css({ color: '#1e54ab' })
             }, function() {
                 $(this).css({ color: '#000' });
             });
         }
         if (ws > 50) {
             $('.header .nav').css({
-                backgroundColor: '#33a3dc',
+                backgroundColor: '#1e54ab',
                 position: 'fixed',
                 opacity: '0.9',
             }).find('a').css({ color: '#fff' }).hover(function() {
@@ -118,7 +118,7 @@ $(function() {
     document.ondragstart = function() {
         return false;
     };
-
+    //手机页面小按钮点击
     $(".nav-list").click(function() {
         $('.min-nav').fadeToggle(100);
     });
@@ -129,6 +129,8 @@ $(function() {
         // direction: 'vertical',
         // 循环
         loop: true,
+        // 不拖动
+        onlyExternal:true,
         // 懒加载
         lazyLoading: true,
         // 如果需要分页器
@@ -137,7 +139,7 @@ $(function() {
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         // 一组的张数
-        slidesPerGroup: 1,
+        slidesPerGroup: 3,
         // 一次显示的张数
         slidesPerView: 3,
         // 每一张的间隔

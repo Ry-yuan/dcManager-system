@@ -3,7 +3,10 @@
 * {
     font-family: "NSimSun";
 }
-
+/* ie 下图片问题 */
+a img{
+    border:0 none;
+}
 .header {
     width: 100%;
     height: 460px;
@@ -39,9 +42,8 @@
 /* 头部导航栏 */
 
 .header .nav {
-    padding-top: 5px;
     width: 100%;
-    height: 30px;
+    height: 40px;
     z-index: 99;
     overflow: hidden;
     background-size: cover;
@@ -53,38 +55,42 @@
     -o-transition: all 0.2s linear;
 }
 
+/* 左右两边导航 */
+
+.header .nav-left {
+    float: left;
+    height: 100%;
+    line-height: 33px;
+    margin-left: 20%;
+}
+
+.header .nav-right {
+    float: right;
+    height: 100%;    
+    line-height: 33px;
+    margin-right: 20%;
+}
 
 /* 头部导航列表 */
 
-.header .nav li {
+.header .nav .item {
     float: left;
     padding-right: 20px;
 }
 
 
 /* 列表链接 */
-
-.header .nav li a {
+.header .nav .item a {
     color: #000;
     font-size: 1em;
     font-family: "Microsoft YaHei";
 }
 
-.header .nav li a:hover {
+.header .nav .item a:hover {
     color: #33a3dc;
 }
 
 
-/* 左右两边导航 */
-
-.header .nav-left {
-    margin-left: 20%;
-}
-
-.header .nav-right {
-    float: right;
-    margin-right: 20%;
-}
 
 
 /* 学校logo */
@@ -92,7 +98,7 @@
 .header .logo {
     width: 30%;
     position: absolute;
-    top: 2%;
+    top: 3%;
     left: 5%;
 }
 
@@ -100,7 +106,7 @@
 /* logo图片 */
 
 .header .logo img {
-    width: 100%;
+    width: 9    0%;
     height: auto;
 }
 
@@ -109,9 +115,7 @@
 
 .header .titlename {
     font-family: "Microsoft YaHei";
-    /* font-weight:bold; */
     text-shadow: 0 0 10px white;
-    /* font-style: italic; */
     font-size: 55px;
     float: left;
     color: #377d96;

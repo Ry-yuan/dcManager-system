@@ -18,45 +18,49 @@
          $(".overlay").css({
              height: $(document).height(), //给遮盖层的div的高宽度赋值
          }).fadeIn(100);
+         $('body').css("overflow","hidden");
+         //登陆框弹出
          $(".login").fadeIn(200);
      });
 
      $(".close").click(function() {
-         // 遮罩消失
+         //登录框隐藏
          $(".login").fadeOut(100);
+         // 遮罩消失
          $(".overlay").fadeOut(100);
+         $('body').css("overflow","visible");
          $('.sp1,.sp2').text("").css({
-             right: '0%',
+             right: '-30%',
              opacity: '0',
          });
      });
 
 
      // 验证格式
-     // 用户名验证
+     // 学号验证
      $("input").blur(function() {
-         // 用户名验证
+         // 学号验证
          if ($(this).is("#user")) {
              // 验证数字长度
              var n1 = /^\d{9,9}$/;
              var n2 = /^\d{5,5}$/;
              if ($("#user").val() != "") {
                  if (!(n1.test($("#user").val()) || n2.test($("#user").val()))) {
-                     $(".sp1").text("用户名错误").css({
-                         right: '5%',
+                     $(".sp1").text("学号格式错误").css({
+                         right: '0%',
                          opacity: '1',
                      });
                      return isVerify = false;
                  } else if (n1 || n2) {
                      $(".sp1").text("").css({
-                         right: '0%',
+                         right: '-30%',
                          opacity: '0',
                      });
                      return isVerify = true;
                  }
              } else {
-                 $(".sp1").text("用户名为空").css({
-                     right: '5%',
+                 $(".sp1").text("学号为空").css({
+                     right: '0%',
                      opacity: '1',
                  });
                  return isVerify = false;
@@ -64,8 +68,8 @@
          }
      });
      $('#user').keydown(function() {
-         $(".sp1").text("用户名为空").css({
-             right: '0%',
+         $(".sp1").text("学号为空").css({
+             right: '-30%',
              opacity: '0',
          });
          return isVerify = true;
@@ -75,7 +79,7 @@
      $('#pwd').blur(function() {
          if ($('#pwd').val() == "") {
              $(".sp2").text("密码为空").css({
-                 right: '5%',
+                 right: '0%',
                  opacity: '1',
              });
              return isVerify = false;
@@ -83,7 +87,7 @@
      });
      $('#pwd').keydown(function() {
          $(".sp2").text("密码为空").css({
-             right: '0%',
+             right: '-30%',
              opacity: '0',
          });
          return isVerify = true;
@@ -92,15 +96,15 @@
      // 登陆按钮
      $('#popup-submit').click(function() {
          if ($("#user").val() == "") {
-             $(".sp1").text("用户名为空").css({
-                 right: '5%',
+             $(".sp1").text("学号为空").css({
+                 right: '0%',
                  opacity: '1',
              });
              return isVerify = false;
          } else {
              if ($("#pwd").val() == "") {
                  $(".sp2").text("密码为空").css({
-                     right: '5%',
+                     right: '0%',
                      opacity: '1',
                  });
                  return isVerify = false;

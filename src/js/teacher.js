@@ -36,8 +36,6 @@ $(function () {
                 this.hiddenDailog = true;
                 $(".ctrl-overlay").fadeOut(100);
             }
-
-
         }
     })
 

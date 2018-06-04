@@ -1,4 +1,4 @@
-$(function() {
+$(function(){
     // vue实例
     var stuVue = new Vue({
         el: '#student',

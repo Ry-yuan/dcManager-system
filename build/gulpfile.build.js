@@ -3,10 +3,10 @@ var autoprefixer = require('gulp-autoprefixer'); // 处理css中浏览器兼容�
 var rename = require('gulp-rename'); //重命名  
 var cssnano = require('gulp-cssnano'); // css的层级压缩合并
 var less = require('gulp-less'); //less
-// var jshint = require('gulp-jshint'); //js检查 ==> npm install --save-dev jshint gulp-jshint（.jshintrc：https://my.oschina.net/wjj328938669/blog/637433?p=1）  
 var uglify = require('gulp-uglify'); //js压缩  
 var concat = require('gulp-concat'); //合并文件  
 var imagemin = require('gulp-imagemin'); //图片压缩 
+var babel = require('gulp-babel');  //babel转换es6 ==》 es5
 var Config = require('./gulpfile.config.js');
 //======= gulp build 打包资源 ===============
 function build() {
@@ -33,7 +33,7 @@ function build() {
      * LESS样式处理 
      */
     gulp.task('less', function() {
-        return gulp.src(Config.less.src).pipe(autoprefixer('last 2 version')).pipe(less()).pipe(gulp.dest(Config.less.dist))
+        return gulp.src(Config.less.src).pipe(autoprefixer('last 2 version')).pipe(less())
             .pipe(cssnano()) //执行压缩  
             .pipe(gulp.dest(Config.less.dist));
     });
@@ -41,7 +41,11 @@ function build() {
      * js处理 
      */
     gulp.task('js', function() {
-        return gulp.src(Config.js.src).pipe(gulp.dest(Config.js.dist)).pipe(uglify()).pipe(gulp.dest(Config.js.dist));
+        return gulp.src(Config.js.src)
+        .pipe(babel({
+            presets: ['env']
+        })).pipe(uglify())
+        .pipe(gulp.dest(Config.js.dist));
     });
     /** 
      * 合并所有js文件并做压缩处理 
@@ -56,7 +60,7 @@ function build() {
      */
     gulp.task('images', function() {
         return gulp.src(Config.img.src).pipe(imagemin({
-            optimizationLevel: 5,
+            optimizationLevel: 3,
             progressive: true,
             interlaced: true
         })).pipe(gulp.dest(Config.img.dist));

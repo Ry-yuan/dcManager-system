@@ -1,3 +1,5 @@
+"use strict";
+
 /*
  * 	实现表单校验
  */
@@ -8,8 +10,7 @@ function valify(form) {
     //手机格式
     var phoneRegex = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
     //验证非空
-    if (form.name.value.length == 0 || form.major.value.length == 0 ||
-        form.num.value.length == 0 || form.email.value.length == 0 || form.phone.value.length == 0) {
+    if (form.name.value.length == 0 || form.major.value.length == 0 || form.num.value.length == 0 || form.email.value.length == 0 || form.phone.value.length == 0) {
         alert("信息不能留空！");
         flag = false;
     } else if (!phoneRegex.test(form.phone.value)) {

@@ -1,4 +1,6 @@
-$(function() {
+'use strict';
+
+$(function () {
     // ader的背景图的高度
     // var h =$(".p-background img").height();
     // $("p-header").height(h);
@@ -18,7 +20,7 @@ $(function() {
     toLiSize = liSize + liMarginR;
     // console.log(winWidth);
     // 改变窗口尺寸时再获得header背景图的高度
-    $(window).resize(function() {
+    $(window).resize(function () {
         // 获取窗口宽度
         winWidth = window.screen.width;
         liSize = 0.3;
@@ -41,10 +43,9 @@ $(function() {
         });
     });
 
-
     // 轮播图设置
     ;
-    (function() {
+    (function () {
         //外边框的宽度
         // var bannerwidth=$('#banner').width();
         //设置每个li的宽度设置，自适应 
@@ -54,51 +55,48 @@ $(function() {
         });
         // 左右箭头点击
         function goRight() {
-            $("#banner ul").animate({ marginLeft: '-' + bannerwidth * toLiSize + "px" }, 1000, function() {
+            $("#banner ul").animate({ marginLeft: '-' + bannerwidth * toLiSize + "px" }, 1000, function () {
                 $("#banner ul>li").eq(0).appendTo($("#banner ul"));
                 $("#banner ul").css('marginLeft', '0px');
             });
         }
-        $('.arrow-right').click(function() {
+        $('.arrow-right').click(function () {
             goRight();
-        })
+        });
 
-        $('.arrow-left').click(function() {
+        $('.arrow-left').click(function () {
             $("#banner ul").css('marginLeft', '-' + bannerwidth * toLiSize + "px");
             $("#banner ul>li").eq(5).prependTo($("#banner ul"));
             $("#banner ul").animate({ marginLeft: "0px" }, 1000);
         });
         // 左右箭头出现
-        $('#banner').hover(function() {
+        $('#banner').hover(function () {
             $('.arrow').fadeIn(300);
-        }, function() {
+        }, function () {
             $('.arrow').fadeOut(300);
         });
         var settime = setInterval(goRight, 3000);
-        $('#banner').mouseover(function() {
+        $('#banner').mouseover(function () {
             clearInterval(settime);
-        })
-        $('#banner').mouseout(function() {
+        });
+        $('#banner').mouseout(function () {
             settime = setInterval(goRight, 3000);
         });
-
     })();
-
-
 
     //导航栏跟着滚动显示变化
     var windowHeight = $(window).height();
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         // 滚动条滚动距离
-        var ws = $(window).scrollTop()
+        var ws = $(window).scrollTop();
         if (ws < 50) {
             $('.header .nav').css({
                 position: 'static',
                 backgroundColor: 'transparent',
-                opacity: '1',
-            }).find('a').css({ color: '#000' }).hover(function() {
-                $(this).css({ color: '#1e54ab' })
-            }, function() {
+                opacity: '1'
+            }).find('a').css({ color: '#000' }).hover(function () {
+                $(this).css({ color: '#1e54ab' });
+            }, function () {
                 $(this).css({ color: '#000' });
             });
         }
@@ -106,23 +104,22 @@ $(function() {
             $('.header .nav').css({
                 backgroundColor: '#1e54ab',
                 position: 'fixed',
-                opacity: '0.9',
-            }).find('a').css({ color: '#fff' }).hover(function() {
-                $(this).css({ color: '#fdb933' })
-            }, function() {
+                opacity: '0.9'
+            }).find('a').css({ color: '#fff' }).hover(function () {
+                $(this).css({ color: '#fdb933' });
+            }, function () {
                 $(this).css({ color: '#fff' });
             });
         }
     });
     // 网页禁止托拽
-    document.ondragstart = function() {
+    document.ondragstart = function () {
         return false;
     };
     //手机页面小按钮点击
-    $(".nav-list").click(function() {
+    $(".nav-list").click(function () {
         $('.min-nav').fadeToggle(100);
     });
-
 
     // 轮播图swiper设置
     var mySwiper = new Swiper('.swiper-container', {
@@ -130,7 +127,7 @@ $(function() {
         // 循环
         loop: true,
         // 不拖动
-        onlyExternal:true,
+        onlyExternal: true,
         // 懒加载
         lazyLoading: true,
         // 如果需要分页器
@@ -143,9 +140,8 @@ $(function() {
         // 一次显示的张数
         slidesPerView: 3,
         // 每一张的间隔
-        spaceBetween: 20,
+        spaceBetween: 20
         // 如果需要滚动条
         // scrollbar: '.swiper-scrollbar'
-    })
-
+    });
 });

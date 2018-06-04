@@ -23,6 +23,7 @@
             <div class="welcome">
                 <div id="welcomMag"><span>欢迎你:&nbsp&nbsp151543107</span><span>曹志鑫同学</span></div><a href="#">注销</a></div>
         </header>
+        <!-- 侧边栏 -->
         <section class="sideBar">
             <dl class="icon icon1" id="btn-declare" @click="key=1">
                 <dt class="icon-declare">
@@ -45,9 +46,11 @@
                 </dt>
             </dl>
         </section>
+        <!-- 项目申报 -->
         <section class="stu-wrapper">
             <p class="ctrl-pos">当前位置：<a href="#">首页</a>--<a href="#">用户登录</a>--<a href="#">项目申报</a></p>
-            <form v-if="key==1" id="projectIssue" action="http://localhost:8080/System/StudentServlet?method=declaredProject" method="post" enctype="multipart/form-data">
+            <form v-if="key==1" id="projectIssue" action="http://localhost:8080/System/StudentServlet?method=declaredProject" method="post"
+                enctype="multipart/form-data">
                 <div class="person-mag declare">
                     <div class="mag-list">
                         <p>项目名称:</p>
@@ -120,8 +123,7 @@
                             <td>{{item.level}}</td>
                             <td>{{item.status}}</td>
                             <td><span class="check-pj">查看</span><span class="reset-pj">撤回</span></td>
-                            <td><span @click="projectCheck(this)
-">点击查看</span></td>
+                            <td><span @click="projectCheck(this)">点击查看</span></td>
                         </tr>
                     </tbody>
                 </table>

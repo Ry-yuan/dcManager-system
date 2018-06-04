@@ -26,12 +26,9 @@
 .projects {
     margin: 0 auto;
     margin-top: 30px;
-    /* float: left; */
-    width: 85%;
-    /* height: 100%; */
-    /* height: 1000px; */
+    width:85%;
+    min-width: 1024px;
     overflow: hidden;
-    /* border: 1px solid blue; */
     position: absolute;
     left: 9%;
 }
@@ -45,19 +42,13 @@
     width: 100%;
     height: 100px;
     overflow: hidden;
-    /* float: left; */
-    /* position: fixed; */
-    /* z-index: 10; */
-    /* background: url('../images/controller-backgrong.png'); */
-    /* background-repeat: repeat-x; */
-    /* border-bottom: 2px solid #dcd; */
 }
 
 .ctrl-logo {
     float: left;
     width: 25%;
     height: 110px;
-    background: url('../images/logo(1).png');
+    background: url('../images/icon-logo.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     /* margin-top: 20px; */
@@ -69,11 +60,9 @@
     float: right;
     width: 70%;
     height: 100%;
-    background: url('../images/blue-bar2.png');
+    background: url('../images/blue-bar.png');
     background-repeat: repeat-x;
     background-size: 100% 100%;
-    /* background-size: 100% 100%; */
-    /* border: 1px solid blue; */
 }
 
 
@@ -93,8 +82,6 @@
 .ctrl-sideBar .icon {
     height: 15%;
     margin-top: 65px;
-    /* padding: 5%; */
-    /* margin-top: 15px; */
 }
 
 .icon {
@@ -102,7 +89,6 @@
     width: 100%;
     height: 15%;
     margin-top: 25px;
-    /* border: 1px solid yellow; */
     cursor: pointer;
 }
 
@@ -114,7 +100,6 @@
     margin: 0 auto;
     width: 40px;
     height: 40px;
-    /* border: 1px solid red; */
     background-size: 40px 40px;
     background-repeat: no-repeat;
 }
@@ -161,12 +146,9 @@
 }
 
 .issue-container {
-    /* margin-left: 6.5%; */
-    /* margin-top: 30px; */
     float: left;
-    /* border: 1px solid blue; */
     width: 65%;
-    /* height: 2000px; */
+    min-width: 500px;
 }
 
 .ctrl-pos {
@@ -199,6 +181,7 @@
     float: right;
     /* border: 1px solid green; */
     width: 32%;
+    min-width: 300px;
     height: 250px;
     /* margin-top: 30px; */
     background-color: rgba(241, 245, 248, 0.5);
@@ -501,32 +484,28 @@
 }
 
 .btns-box {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
-    /* border: 1px solid red; */
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 10px;
+    text-align: center;
 }
 
 .ctrl-btn {
-    float: left;
+    display: inline-block;
+    margin: 0 30px;
     border-radius: 2px;
     text-align: center;
     width: 80px;
     height: 25px;
     line-height: 25px;
     margin-top: 10px;
-    margin-left: 60px;
-    /* border: 1px solid red; */
     color: white;
     cursor: pointer;
-    /* opacity: 0.8; */
 }
 
 .ensure {
     background-color: #464547;
-    /* pointer-events: none; */
-    /* cursor: not-allowed; */
     position: relative;
     cursor: not-allowed;
 }

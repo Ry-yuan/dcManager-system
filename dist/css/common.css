@@ -22,3 +22,13 @@ a{
 input:-webkit-autofill{
 	-webkit-box-shadow: 0 0 0px 1000px rgba(241,245,248,1) inset;
 }
+.clearfloat{
+	zoom:1;
+}
+.clearfloat:after{
+	content: '.';
+	height: 0;
+	display: block;
+	clear: both;
+	visibility: hidden;
+}

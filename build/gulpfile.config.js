@@ -27,7 +27,6 @@ var Config = {
     // less文件路径
     less: {
         src: SRC_DIR + 'less/*.less',
-        src1: SRC_DIR + 'css',
         dist: DIST_DIR + 'css'
     },
     // js文件路径
@@ -40,6 +39,11 @@ var Config = {
     img: {
         src: SRC_DIR + 'images/**/*',
         dist: DIST_DIR + 'images'
+    },
+    // mock数据处理
+    mock: {
+        src: SRC_DIR + 'mockdata/**/*',
+        dist: DIST_DIR + 'mockdata'
     }
 };
 // 暴露config变量

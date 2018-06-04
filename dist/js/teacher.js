@@ -1,3 +1,5 @@
+"use strict";
+
 $(function () {
     // function changeList(btnId, changId) {
     //     $(btnId).click(function () {
@@ -25,19 +27,19 @@ $(function () {
         },
         methods: {
             //撤项函数
-            recallProject: function (item) {
+            recallProject: function recallProject(item) {
                 this.recallProjectName = item.project;
                 this.hiddenDailog = false;
                 // 遮罩层
                 showOverlay();
             },
             //取消撤项
-            cancleRecallProject:function(){
+            cancleRecallProject: function cancleRecallProject() {
                 this.hiddenDailog = true;
                 $(".ctrl-overlay").fadeOut(100);
             }
         }
-    })
+    });
 
     // 遮罩层出现函数
     function showOverlay() {
@@ -46,7 +48,7 @@ $(function () {
         // 遮罩层出现
         $(".ctrl-overlay").css({
             //给遮盖层的div的高宽度赋值
-            height: $(document).height(),
+            height: $(document).height()
         }).fadeIn(100);
     }
 
@@ -57,14 +59,12 @@ $(function () {
         $('.circle-box2 .sk-circle').fadeIn();
     }
 
-
     // 遮罩层+loading动画隐藏
     function waitingHide() {
         $(".ctrl-overlay").fadeOut(100);
         // 等待动画
         $('.circle-box2 .sk-circle').fadeOut();
     }
-
 
     // 请求学生项目的数据
     function getStudentProject() {
@@ -76,7 +76,7 @@ $(function () {
             dataType: 'json',
             // data: {param1: 'value1'},
             beforeSend: waitingShow,
-            success: function (data) {
+            success: function success(data) {
                 teacher.$data.studentProject = data;
                 waitingHide();
                 // console.log(teacher.$data.studentProject);
@@ -110,7 +110,6 @@ $(function () {
         top: '0'
     });
 
-
     // 审核通过按钮
     var pjNum = '';
     var pjStatus = '';
@@ -131,28 +130,21 @@ $(function () {
                 status: pjStatus
             },
             // 12-10
-            beforeSend: function () {
+            beforeSend: function beforeSend() {
                 var bh = window.screen.height; //获取当前浏览器界面的高度
                 var bw = document.body.clientWidth; //获取当前浏览器界面的宽度
                 $(".ctrl-overlay").css({
                     height: bh, //给遮盖层的div的高宽度赋值
-                    width: bw,
+                    width: bw
                 }).fadeIn(100);
                 // 出现等待动画
                 $('.circle-box2 .sk-circle').fadeIn();
             },
-            success: function (data) {
+            success: function success(data) {
                 $('.stu-project table tbody').empty();
                 var tableHtml = '';
                 $.each(data, function (magIndex, mag) {
-                    tableHtml += "<tr ><td>" + mag['projectName'] +
-                        "</td><td>" + mag['projectNum'] + "</td><td>" + mag[
-                            'projectType'] + "</td><td>" + mag['tutor'] +
-                        "</td><td>" + mag['captain'] + "</td><td>" + mag[
-                            'dateTime'] + "</td><td>" + mag['status'] +
-                        "</td><td>0</td><td><span class='check-pj'>查看</span><span class='verify-pj' data-num=" +
-                        mag['projectNum'] + " data-status=" + mag['status'] +
-                        ">通过</span></td></tr>";
+                    tableHtml += "<tr ><td>" + mag['projectName'] + "</td><td>" + mag['projectNum'] + "</td><td>" + mag['projectType'] + "</td><td>" + mag['tutor'] + "</td><td>" + mag['captain'] + "</td><td>" + mag['dateTime'] + "</td><td>" + mag['status'] + "</td><td>0</td><td><span class='check-pj'>查看</span><span class='verify-pj' data-num=" + mag['projectNum'] + " data-status=" + mag['status'] + ">通过</span></td></tr>";
                 });
                 $('.stu-project table tbody').append(tableHtml);
                 // 12-10
@@ -161,7 +153,7 @@ $(function () {
                 $('.circle-box2 .sk-circle').fadeOut();
                 // alert('ok');
             },
-            error: function () {
+            error: function error() {
                 alert('审核ok');
             }
         });
